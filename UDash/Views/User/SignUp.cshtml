@@ -1,0 +1,25 @@
+﻿@model UserModel
+@{
+	Layout = "_LayoutOffLine";
+	ViewData["Title"] = "Cadastro";
+}
+
+
+<form asp-controller="User" asp-action="CreateUser" method="post">
+
+	<label for="exampleFormControlInput1" class="form-label">Email address</label>
+	<input type="text" asp-for="FirstName" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+
+	<label for="exampleFormControlInput1" class="form-label">Email address</label>
+	<input type="text" asp-for="LastName" class="form-control" id="exampleFormControlInput1" placeholder="Sobrenome">
+
+	<label for="exampleFormControlInput1" class="form-label">Email address</label>
+	<input type="text" asp-for="Login.Login" class="form-control" id="exampleFormControlInput1" placeholder="Login">
+
+	<label for="exampleFormControlInput1" class="form-label">Email address</label>
+	<input type="password" asp-for="Login.Password" class="form-control" id="exampleFormControlInput1" placeholder="Senha">
+
+	<label for="exampleFormControlInput1" class="form-label">Email address</label>
+	<input type="email" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+
+</form>
