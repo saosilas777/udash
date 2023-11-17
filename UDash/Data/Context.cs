@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UDash.Models;
 
-namespace SistemaContatos.Data
+namespace UDash.Data
 {
 	public class Context : DbContext
 	{

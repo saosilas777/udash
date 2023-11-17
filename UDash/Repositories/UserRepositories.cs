@@ -1,14 +1,28 @@
-﻿using UDash.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using UDash.Data;
+using UDash.Interfaces;
 using UDash.Models;
 
 namespace UDash.Repositories
 {
 	public class UserRepositories : IUserRepository
 	{
+		private readonly Context _context;
+
+		public UserRepositories(Context context)
+		{
+			_context = context;
+		}
 
 		public UserModel Create(UserModel user)
 		{
-			throw new NotImplementedException();
+			user.ResgiterData = DateTime.Now;
+			user.LastUpdate = DateTime.Now;
+			user.Perfil = Enums.Perfil.padrao;
+			user.Login.Id = user.Id;
+			_context.Add(user);
+			_context.SaveChanges();
+			return user;
 		}
 
 
@@ -24,7 +38,12 @@ namespace UDash.Repositories
 
 		public UserModel BuscarPorLogin(string login)
 		{
-			throw new NotImplementedException();
+			UserModel user = _context.Users.FirstOrDefault(x => x.Login.Login == login);
+
+			if (user != null)
+				return user;
+
+			return null;
 		}
 
 		public List<UserModel> BuscarTodos()

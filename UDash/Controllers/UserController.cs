@@ -26,7 +26,7 @@ namespace UDash.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult CreateUser(UserModel user)
+		public IActionResult Create(UserModel user)
 		{
 			if (ModelState.IsValid)
 			{

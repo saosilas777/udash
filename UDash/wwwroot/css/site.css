@@ -40,7 +40,7 @@ img {
     max-width: 15.625rem;
     padding: .5rem;
     transition: all .5s;
-    z-index:1;
+    z-index: 1;
 }
 
 .main {
@@ -105,8 +105,9 @@ img {
     border-radius: 8px;
     cursor: pointer;
 }
-.logout-btn a{
-    color:white;
+
+.logout-btn a {
+    color: white;
 }
 
 .active {
@@ -447,6 +448,8 @@ img {
     /* border:1px solid red; */
 }
 
+
+
 .loginHeader_content {
     position: absolute;
     top: -2.5rem;
@@ -483,7 +486,7 @@ img {
         margin: .1rem;
     }
 
-    .loginForm_content input[type="text"], #inputPwd {
+    .loginForm_content input[type="text"], #inputPwd, .signEmail {
         width: 100%;
         border: 1px solid #ccc;
         padding: .7rem .5rem;
@@ -548,7 +551,11 @@ img {
     color: white;
     letter-spacing: 1px;
     box-shadow: 2px 2px 8px black;
-    cursor:pointer;
+    cursor: pointer;
+}
+.signForm form {
+    gap: .5rem;
+    
 }
 
 .login_footer {
