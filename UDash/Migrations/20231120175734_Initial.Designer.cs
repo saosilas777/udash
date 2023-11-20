@@ -12,8 +12,8 @@ using UDash.Data;
 namespace UDash.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231117212858_first")]
-    partial class first
+    [Migration("20231120175734_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,8 +43,6 @@ namespace UDash.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Login");
                 });
@@ -76,17 +74,6 @@ namespace UDash.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("UDash.Models.LoginModel", b =>
-                {
-                    b.HasOne("UDash.Models.UserModel", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

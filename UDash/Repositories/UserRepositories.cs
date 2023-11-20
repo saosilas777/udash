@@ -2,6 +2,7 @@
 using UDash.Data;
 using UDash.Interfaces;
 using UDash.Models;
+using UDash.Models.ViewModels;
 
 namespace UDash.Repositories
 {
@@ -14,17 +15,15 @@ namespace UDash.Repositories
 			_context = context;
 		}
 
-		public LoginModel Create(LoginModel Login)
+		public LoginModel Create(LoginModel login)
 		{
-			
-			Login.User.Perfil = Enums.Perfil.padrao;
-			Login.User.ResgiterData = DateTime.Now;
-			Login.User.LastUpdate = DateTime.Now;
-			Login.UserId = Login.User.Id;
-
-			_context.Login.Add(Login);
+			login.User.Perfil = Enums.Perfil.padrao;
+			login.User.ResgiterData = DateTime.Now;
+			login.User.LastUpdate = DateTime.Now;
+						
+			_context.Login.Add(login);
 			_context.SaveChanges();
-			return Login;
+			return login;
 		}
 
 

@@ -2,6 +2,7 @@
 using UDash.Data;
 using UDash.Interfaces;
 using UDash.Models;
+using UDash.Models.ViewModels;
 using UDash.Repositories;
 
 namespace UDash.Controllers

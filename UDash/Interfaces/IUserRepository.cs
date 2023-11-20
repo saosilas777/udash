@@ -1,4 +1,5 @@
 ﻿using UDash.Models;
+using UDash.Models.ViewModels;
 
 namespace UDash.Interfaces
 {
