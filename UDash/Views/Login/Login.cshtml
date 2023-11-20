@@ -4,44 +4,45 @@
 	ViewData["Title"] = "Login";
 }
 
-    <div class="container">
-        <div class="loginContainer">
-            <div class="loginHeader">
-                <div class="loginHeader_content">
-                    <h1>Sign in</h1>
-                    <div class="loginHeader_icons">
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-google"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
+<div class="container">
+	<div class="loginContainer">
+		<div class="loginHeader">
+			<div class="loginHeader_content">
+				<h1>Sign in</h1>
+				<div class="loginHeader_icons">
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-google"></i>
+					<i class="fa-brands fa-instagram"></i>
+				</div>
 
-                </div>
-            </div>
-            <div class="loginForm">
-                <form class="loginForm_content" asp-controller="Login" asp-action="Entrar" method="post">
-                    <label for="login">
-                        <input type="text"  asp-for="Login"  id="inputLogin" placeholder="Usuário ou E-mail">
-                    </label>
-                    <label for="pwd">
-                        <input type="password" asp-for="Password" id="inputPwd" placeholder="Senha">
-                    </label>
-                    <label for="rememberMe" class="remember">
-                        <input type="checkbox" name="rememberMe" id="rememberMe">
-                        <p>Remember me</p>
-                    </label>
-                    <label for="submit">
-                        <input type="submit" value="Login" name="submit" id="inputSubmit">
-                        <a href="/principal.html" id="index"></a>
-                    </label>
-                    <label for="signUp">
-                        Don't have an account ? <a asp-action="SignUp" asp-controller="User">signUp</a>
-                    </label>
-                </form>
-            </div>
-        </div>
-        <footer class="login_footer">
-            <p>Development by &copy; <span>U.code</span></p>
-        </footer>
-    </div>
-    <script src="/login.js"></script>
+			</div>
+		</div>
+		<div class="loginForm">
+			<form class="loginForm_content" asp-controller="Login" asp-action="Entrar" method="post">
+				<label for="login">
+					<input type="text" asp-for="Login" id="inputLogin" placeholder="Usuário ou E-mail">
+					@Html.ValidationMessageFor(x => x.Login)
+				</label>
+				<label for="pwd">
+					<input type="password" asp-for="Password" id="inputPwd" placeholder="Senha">
+				</label>
+				<label for="rememberMe" class="remember">
+					<input type="checkbox" name="rememberMe" id="rememberMe">
+					<p>Remember me</p>
+				</label>
+				<label for="submit">
+					<input type="submit" value="Login" name="submit" id="inputSubmit" class="inputButton">
+					<a href="/principal.html" id="index"></a>
+				</label>
+				<label for="signUp">
+					Don't have an account ? <a asp-action="SignUp" asp-controller="Login">signUp</a>
+				</label>
+			</form>
+		</div>
+	</div>
+	<footer class="login_footer">
+		<p>Development by &copy; <span>U.code</span></p>
+	</footer>
+</div>
+<script src="/js/site.js"></script>
 

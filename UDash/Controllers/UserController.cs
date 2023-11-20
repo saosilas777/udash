@@ -19,21 +19,8 @@ namespace UDash.Controllers
 		}
 
 		
-		public IActionResult SignUp()
-		{
-			return View();
+		
 
-		}
-
-		[HttpPost]
-		public IActionResult Create(UserModel user)
-		{
-			if (ModelState.IsValid)
-			{
-				_userRepository.Create(user);
-				return RedirectToAction("Login", "Login");
-			}
-			return RedirectToAction("SignUp", "User");
-		}
+		
 	}
 }

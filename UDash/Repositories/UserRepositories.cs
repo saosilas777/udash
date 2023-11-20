@@ -14,15 +14,17 @@ namespace UDash.Repositories
 			_context = context;
 		}
 
-		public UserModel Create(UserModel user)
+		public LoginModel Create(LoginModel Login)
 		{
-			user.ResgiterData = DateTime.Now;
-			user.LastUpdate = DateTime.Now;
-			user.Perfil = Enums.Perfil.padrao;
-			user.Login.Id = user.Id;
-			_context.Add(user);
+			
+			Login.User.Perfil = Enums.Perfil.padrao;
+			Login.User.ResgiterData = DateTime.Now;
+			Login.User.LastUpdate = DateTime.Now;
+			Login.UserId = Login.User.Id;
+
+			_context.Login.Add(Login);
 			_context.SaveChanges();
-			return user;
+			return Login;
 		}
 
 
@@ -36,14 +38,18 @@ namespace UDash.Repositories
 			throw new NotImplementedException();
 		}
 
-		public UserModel BuscarPorLogin(string login)
+		public UserModel BuscarPorLogin(LoginModel login)
 		{
-			UserModel user = _context.Users.FirstOrDefault(x => x.Login.Login == login);
-
-			if (user != null)
+			LoginModel loginDB = _context.Login.FirstOrDefault(x => x.Login == login.Login);
+			if(loginDB != null)
+			{
+				UserModel user = _context.Users.FirstOrDefault(x => x.Id == loginDB.UserId);
 				return user;
+			}
 
 			return null;
+
+
 		}
 
 		public List<UserModel> BuscarTodos()

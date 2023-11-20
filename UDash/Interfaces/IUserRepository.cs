@@ -4,10 +4,10 @@ namespace UDash.Interfaces
 {
 	public interface IUserRepository
 	{
-			UserModel Create(UserModel user);
+		LoginModel Create(LoginModel login);
 
-		
-			UserModel BuscarPorLogin(string login);
+
+			UserModel BuscarPorLogin(LoginModel login);
 			UserModel BuscarPorEmaileLogin(string login, string email);
 			List<UserModel> BuscarTodos();
 			UserModel BuscarPorId(Guid id);

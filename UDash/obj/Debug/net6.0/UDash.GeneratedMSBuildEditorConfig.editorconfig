@@ -8,45 +8,45 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UDash
 build_property.RootNamespace = UDash
-build_property.ProjectDir = Z:\Udash\UDash\UDash\
+build_property.ProjectDir = Z:\Udash\udash\UDash\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = Z:\Udash\UDash\UDash
+build_property.MSBuildProjectDirectory = Z:\Udash\udash\UDash
 build_property._RazorSourceGeneratorDebug = 
 
-[Z:/Udash/UDash/UDash/Views/Home/Index.cshtml]
+[Z:/Udash/udash/UDash/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/Login/Login.cshtml]
+[Z:/Udash/udash/UDash/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/Shared/Error.cshtml]
+[Z:/Udash/udash/UDash/Views/Login/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnblVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/Udash/udash/UDash/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/Shared/_ValidationScriptsPartial.cshtml]
+[Z:/Udash/udash/UDash/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/User/SignUp.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[Z:/Udash/UDash/UDash/Views/_ViewImports.cshtml]
+[Z:/Udash/udash/UDash/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/_ViewStart.cshtml]
+[Z:/Udash/udash/UDash/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/Udash/UDash/UDash/Views/Shared/_Layout.cshtml]
+[Z:/Udash/udash/UDash/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-mieoo7mi3i
 
-[Z:/Udash/UDash/UDash/Views/Shared/_LayoutOffLine.cshtml]
+[Z:/Udash/udash/UDash/Views/Shared/_LayoutOffLine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPZmZMaW5lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-a6xyjrfocx

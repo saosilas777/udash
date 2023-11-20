@@ -23,6 +23,24 @@ namespace UDash.Controllers
 		{
 			return RedirectToAction("Login");
 		}
+		public IActionResult SignUp()
+		{
+			return View();
+
+		}
+
+		[HttpPost]
+		public IActionResult Create(LoginModel loginModel)
+		{
+			if (ModelState.IsValid)
+			{
+				_repository.Create(loginModel);
+				return RedirectToAction("Login", "Login");
+			}
+			return View("Login");
+			/*}
+			return RedirectToAction("SignUp", "User");*/
+		}
 
 		[HttpPost]
 		public IActionResult Entrar(LoginModel loginModel)
@@ -30,14 +48,12 @@ namespace UDash.Controllers
 			
 			try
 			{
-				if (ModelState.IsValid)
-				{
 					var login = loginModel.Login;
-					UserModel user = _repository.BuscarPorLogin(login);
+					UserModel user = _repository.BuscarPorLogin(loginModel);
 					if(user != null)
 					return RedirectToAction("Index", "Home");
 
-				}
+				
 								
 
 				return View("Login");

@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿/*const validMessage = document.querySelectorAll('.field-validation-error')[0].outerText
+const inputLogin = document.getElementById('inputLogin')
 
-// Write your JavaScript code.
+if (validMessage != null) {
+    
+    inputLogin.placeholder =  validMessage
+}
+*/

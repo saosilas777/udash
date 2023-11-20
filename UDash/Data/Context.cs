@@ -9,6 +9,7 @@ namespace UDash.Data
 		{
 		}
 		public DbSet<UserModel> Users { get; set; }
+		public DbSet<LoginModel> Login { get; set; }
 
 
 
