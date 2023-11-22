@@ -1,21 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using UDash.Interfaces;
+using UDash.Models;
 using UDash.Models.ViewModels;
+using UDash.Services;
 
 namespace UDash.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ISection _section;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ISection section)
 		{
-			_logger = logger;
+			
+			_section = section;
 		}
 
 		public IActionResult Index()
 		{
-			return View();
+			var section = _section.GetUserSection();
+
+			if (section != null && TokenService.TokenIsValid(section))
+			{
+				UserModel user = TokenService.GetDataInToken(section);
+				return View(user);
+			};
+			_section.UserSectionRemove();
+			return RedirectToAction("Login", "Login");
 		}
 
 		public IActionResult Privacy()

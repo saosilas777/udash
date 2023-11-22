@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\Udash\\udash\\UDash\\UDash.csproj": {}
+    "Z:\\Udash\\UDash\\UDash\\UDash.csproj": {}
   },
   "projects": {
-    "Z:\\Udash\\udash\\UDash\\UDash.csproj": {
+    "Z:\\Udash\\UDash\\UDash\\UDash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\Udash\\udash\\UDash\\UDash.csproj",
+        "projectUniqueName": "Z:\\Udash\\UDash\\UDash\\UDash.csproj",
         "projectName": "UDash",
-        "projectPath": "Z:\\Udash\\udash\\UDash\\UDash.csproj",
+        "projectPath": "Z:\\Udash\\UDash\\UDash\\UDash.csproj",
         "packagesPath": "C:\\Users\\saosi\\.nuget\\packages\\",
-        "outputPath": "Z:\\Udash\\udash\\UDash\\obj\\",
+        "outputPath": "Z:\\Udash\\UDash\\UDash\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"

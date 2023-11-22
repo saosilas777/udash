@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using UDash.Data;
-using UDash.Repositories;
 using System.Text;
-using static System.Collections.Specialized.BitVector32;
 using UDash.Interfaces;
+using UDash.Helpers;
+using UDash.Repository;
+using UDash.Services;
+using UDash.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,15 +22,18 @@ options.UseSqlServer((conn) ?? throw new InvalidOperationException("Connection s
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IUserRepository, UserRepositories>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<ISendEmail, SendEmail>();
+builder.Services.AddSingleton<ISection, Section>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddCors();
-/*var key = Encoding.ASCII.GetBytes(SettingsToken.Secret);*/
+var key = Encoding.ASCII.GetBytes(SettingsToken.Secret);
 
-/*builder.Services.AddAuthentication(x =>
+builder.Services.AddAuthentication(x =>
 {
 	x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 	x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,7 +51,7 @@ builder.Services.AddCors();
 		ValidateLifetime = true
 
 	};
-});*/
+});
 
 
 builder.Services.AddSession(obj =>

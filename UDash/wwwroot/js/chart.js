@@ -1,4 +1,4 @@
-﻿const ctx = document.getElementById('myChart');
+﻿const ctx1 = document.getElementById('myChart');
 let backgroundColor = ""
 
 const _data = [];
@@ -9,7 +9,7 @@ for (let i = 0; i < 6; i++) {
     _data[i] = parseInt(Math.random() * 30)
 }
 
-new Chart(ctx, {
+new Chart(ctx1, {
 
     type: 'bar',
     data: {
@@ -92,85 +92,6 @@ new Chart(ctx, {
     },
 
 });
-
-// const ctx3 = document.getElementById('myChart3').getContext('2d');
-// new Chart(ctx3, {
-//   type: "bar",
-//   data: {
-//     labels: ["M", "T", "W"],
-//     datasets: [{
-//       label: "Sales",
-//       tension: 0.4,
-//       borderWidth: 0,
-//       borderRadius: 4,
-//       borderSkipped: false,
-//       backgroundColor: "rgba(255, 255, 255, .8)",
-//       data: [50, 20, 10],
-//       maxBarThickness: 6
-//     }, ],
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: true,
-//     plugins: {
-//       legend: {
-//         display: false,
-//       }
-//     },
-//     interaction: {
-//       intersect: false,
-//       mode: 'index',
-//     },
-//     scales: {
-//       y: {
-//         grid: {
-//           drawBorder: false,
-//           display: true,
-//           drawOnChartArea: true,
-//           drawTicks: false,
-//           borderDash: [5, 5],
-//           color: 'rgba(255, 255, 255)'
-//         },
-//         ticks: {
-//           suggestedMin: 0,
-//           suggestedMax: 500,
-//           beginAtZero: true,
-//           padding: 10,
-//           font: {
-//             size: 14,
-//             weight: 300,
-//             family: "Roboto",
-//             style: 'normal',
-//             lineHeight: 2
-//           },
-//           color: "#fff"
-//         },
-//       },
-//       x: {
-//         grid: {
-//           drawBorder: false,
-//           display: true,
-//           drawOnChartArea: true,
-//           drawTicks: false,
-//           borderDash: [5, 5],
-//           color: 'rgba(255, 255, 255, .8)'
-//         },
-//         ticks: {
-//           display: true,
-//           color: '#000',
-//           padding: 10,
-//           font: {
-//             size: 14,
-//             weight: 300,
-//             family: "Roboto",
-//             style: 'normal',
-//             lineHeight: 2
-//           },
-//         }
-//       },
-//     },
-//   },
-// });
 
 const ctx2 = document.getElementById('myChart2');
 
@@ -259,23 +180,3 @@ new Chart(ctx2, {
 
 });
 
-// const ctx3 = document.getElementById('myChart3');
-
-// new Chart(ctx3, {
-//   type: 'bar',
-//   data: {
-//     labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-//     datasets: [{
-//         label: 'MRR Mês',
-//       data: [10, 9, 23, 55, 43],
-//       borderWidth: 0
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// });

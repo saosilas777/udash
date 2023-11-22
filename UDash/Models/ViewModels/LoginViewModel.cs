@@ -1,8 +1,13 @@
-﻿namespace UDash.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UDash.Models.ViewModels
 {
 	public class LoginViewModel
 	{
-		public UserModel User { get; set; }
-		public LoginModel Login { get; set; }
+		public Guid Id { get; set; }
+		public Guid UserId { get; set; }
+		[Required(ErrorMessage = "É preciso informar um login válido")]
+		public string Login { get; set; }
+		public string Password { get; set; }
 	}
 }

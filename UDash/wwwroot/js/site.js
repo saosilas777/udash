@@ -1,8 +1,10 @@
-﻿/*const validMessage = document.querySelectorAll('.field-validation-error')[0].outerText
-const inputLogin = document.getElementById('inputLogin')
+﻿let alerta = document.querySelector('.alert');
 
-if (validMessage != null) {
-    
-    inputLogin.placeholder =  validMessage
+() => {
+    setTimeout(function () {
+        alerta.style.transform = 'translateY(-10rem)';
+    }, 3000)
 }
-*/
+
+
+

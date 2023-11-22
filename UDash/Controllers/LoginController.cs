@@ -3,25 +3,43 @@ using UDash.Data;
 using UDash.Interfaces;
 using UDash.Models;
 using UDash.Models.ViewModels;
-using UDash.Repositories;
+using UDash.Repository;
+using UDash.Services;
 
 namespace UDash.Controllers
 {
 	public class LoginController : Controller
 	{
-		private readonly IUserRepository _repository;
-		public LoginController(IUserRepository repository)
+		private readonly ILoginRepository _loginRepository;
+		private readonly IUserRepository _userRepository;
+		private readonly ISection _section;
+		private readonly ISendEmail _sendEmail;
+		public LoginController(ILoginRepository loginRepository,
+							  IUserRepository userRepository,
+							  ISection section,
+							  ISendEmail sendEmail)
 		{
-			_repository = repository;
+			_loginRepository = loginRepository;
+			_userRepository = userRepository;
+			_section = section;
+			_sendEmail = sendEmail;
 		}
 
 		public IActionResult Login()
 		{
+			var section = _section.GetUserSection();
+			
+			if (section != null && TokenService.TokenIsValid(section))
+			{
+			  return RedirectToAction("Index", "Home");
+			};
+			_section.UserSectionRemove();
 			return View();
 		}
-		
+
 		public IActionResult Logout()
 		{
+			_section.UserSectionRemove();
 			return RedirectToAction("Login");
 		}
 		public IActionResult SignUp()
@@ -33,38 +51,96 @@ namespace UDash.Controllers
 		[HttpPost]
 		public IActionResult Create(LoginModel loginModel)
 		{
-			if (ModelState.IsValid)
+			try
 			{
-				_repository.Create(loginModel);
+				if (!ModelState.IsValid)
+				{
+					TempData["ErrorMessage"] = "Não foi possível criar sua conta, verifique os dados informados.";
+					return View("SignUp");
+
+				}
+				var register = _loginRepository.Create(loginModel);
+				if (register == false)
+				{
+					TempData["ErrorMessage"] = "Login informado já existente, por favor tente novamente!";
+					return View("SignUp");
+				};
+				TempData["SuccessMessage"] = "Cadastro realizado com sucesso, faça seu login!";
 				return RedirectToAction("Login", "Login");
+
+
 			}
-			return View("Login");
+			catch (Exception e)
+			{
+
+				TempData["ErrorMessage"] = $"Não foi possível criar sua conta, verifique os dados informados. {e.Message}";
+				return View("SignUp");
+			}
+
+
 			/*}
 			return RedirectToAction("SignUp", "User");*/
 		}
 
 		[HttpPost]
-		public IActionResult Entrar(LoginModel loginModel)
+		public IActionResult Entrar(LoginViewModel loginViewModel)
 		{
-			
+
 			try
 			{
-					var login = loginModel.Login;
-					UserModel user = _repository.BuscarPorLogin(loginModel);
-					if(user != null)
-					return RedirectToAction("Index", "Home");
+				if (ModelState.IsValid)
+				{
+					var loginDb = _loginRepository.BuscarPorLogin(loginViewModel.Login);
+					if (loginDb != null && loginDb.Password == LoginServices.HashGeneration(loginViewModel.Password))
+					{
+						var authenticated = TokenService.Authenticate(loginDb.User);
+						_userRepository.SaveToken(loginDb.User,authenticated);
+						_section.UserSectionCreate(authenticated);
+						if(authenticated != null)
+						{
+							return RedirectToAction("Index", "Home", authenticated);
 
-				
-								
+						}
+						
+					}
+					TempData["ErrorMessage"] = $"Usuário ou senha inválidos, tente novamente!.";
+					return View("Login", loginViewModel);
+					
+				}
 
-				return View("Login");
+				TempData["ErrorMessage"] = $"Para acessar é necessario informar seu login e senha!";
+				return View("Login", loginViewModel);
+
 			}
 			catch (Exception e)
 			{
 
 				throw new Exception(e.Message);
 			}
-			
+
+		}
+
+		public IActionResult ForgotPassword()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult SendMail(string email)
+		{
+
+			if(email == null)
+			{
+				TempData["ErrorMessage"] = $"Informe um email válido para recuperar sua senha";
+				return View("ForgotPassword", email);
+			}
+			string senhaProvisoria = "senhaProvisoria: Udash102030";
+			if (_loginRepository.BuscarPorEmail(email))
+			{
+				_sendEmail.SendEmail(email,"Recuperação de senha",senhaProvisoria);
+			}
+			return RedirectToAction("ForgotPassword","Login", email);
+
 		}
 	}
 }

@@ -1,29 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using UDash.Data;
 using UDash.Interfaces;
 using UDash.Models;
 using UDash.Models.ViewModels;
 
-namespace UDash.Repositories
+namespace UDash.Repository
 {
-	public class UserRepositories : IUserRepository
+	public class UserRepository : IUserRepository
 	{
 		private readonly Context _context;
 
-		public UserRepositories(Context context)
+		public UserRepository(Context context)
 		{
 			_context = context;
 		}
 
-		public LoginModel Create(LoginModel login)
+		public bool Create(LoginModel login)
 		{
-			login.User.Perfil = Enums.Perfil.padrao;
-			login.User.ResgiterData = DateTime.Now;
-			login.User.LastUpdate = DateTime.Now;
-						
-			_context.Login.Add(login);
+			
+				LoginModel LoginsDB = _context.Login.FirstOrDefault(x => x.Login == login.Login);
+				if(LoginsDB == null)
+				{
+					login.User.Perfil = Enums.Perfil.padrao;
+					login.User.ResgiterData = DateTime.Now;
+					login.User.LastUpdate = DateTime.Now;
+
+					_context.Login.Add(login);
+					_context.SaveChanges();
+					return true;
+				}
+			return false;
+			
+		}
+
+		public bool SaveToken(UserModel user, string token)
+		{
+			user.Token = token;
+			_context.Update(user);
 			_context.SaveChanges();
-			return login;
+
+			return true;
+
 		}
 
 
@@ -37,7 +55,7 @@ namespace UDash.Repositories
 			throw new NotImplementedException();
 		}
 
-		public UserModel BuscarPorLogin(LoginModel login)
+		public UserModel BuscarPorLogin(LoginViewModel login)
 		{
 			LoginModel loginDB = _context.Login.FirstOrDefault(x => x.Login == login.Login);
 			if(loginDB != null)
@@ -67,5 +85,7 @@ namespace UDash.Repositories
 		{
 			throw new NotImplementedException();
 		}
+
+		
 	}
 }

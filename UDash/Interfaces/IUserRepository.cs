@@ -5,17 +5,17 @@ namespace UDash.Interfaces
 {
 	public interface IUserRepository
 	{
-		LoginModel Create(LoginModel login);
+		bool Create(LoginModel login);
+		bool SaveToken(UserModel user, string token);
+
+		UserModel BuscarPorLogin(LoginViewModel login);
+		UserModel BuscarPorEmaileLogin(string login, string email);
+		List<UserModel> BuscarTodos();
+		UserModel BuscarPorId(Guid id);
+		UserModel Editar(UserModel contato);
+		bool Deletar(Guid id);
 
 
-			UserModel BuscarPorLogin(LoginModel login);
-			UserModel BuscarPorEmaileLogin(string login, string email);
-			List<UserModel> BuscarTodos();
-			UserModel BuscarPorId(Guid id);
-			UserModel Editar(UserModel contato);
-			bool Deletar(Guid id);
 
-
-		
 	}
 }
