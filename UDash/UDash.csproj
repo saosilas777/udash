@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\Privacy.cshtml" />
+    <Content Remove="Views\Analytics\Privacy.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

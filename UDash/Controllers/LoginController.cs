@@ -98,7 +98,7 @@ namespace UDash.Controllers
 						_section.UserSectionCreate(authenticated);
 						if(authenticated != null)
 						{
-							return RedirectToAction("Index", "Home", authenticated);
+							return RedirectToAction("Index", "Analytics");
 
 						}
 						

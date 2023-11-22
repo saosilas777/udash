@@ -7,11 +7,11 @@ using UDash.Services;
 
 namespace UDash.Controllers
 {
-	public class HomeController : Controller
+	public class AnalyticsController : Controller
 	{
 		private readonly ISection _section;
 
-		public HomeController(ISection section)
+		public AnalyticsController(ISection section)
 		{
 			
 			_section = section;
@@ -24,7 +24,10 @@ namespace UDash.Controllers
 			if (section != null && TokenService.TokenIsValid(section))
 			{
 				UserModel user = TokenService.GetDataInToken(section);
-				return View(user);
+				AnalyticsModel analytics = new AnalyticsModel();
+				analytics.User = user;
+
+				return View(analytics);
 			};
 			_section.UserSectionRemove();
 			return RedirectToAction("Login", "Login");

@@ -288,24 +288,25 @@ img {
 
 .ticket_content {
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
+    display:flex;
+    justify-content:flex-end;
     padding: 1.3rem;
     color: #1a73e8;
     font-weight: 700;
+    font-size:2rem;
 }
 
-.ticket_figure {
-    position: absolute;
-    top: -18px;
-    left: 12px;
-    padding: .5rem;
-    font-size: 2.3rem;
-    color: white;
-    /*  */
-    border-radius: 8px;
-}
+
+    .ticket_figure {
+        position: absolute;
+        top: -18px;
+        left: 12px;
+        padding: .5rem;
+        font-size: 2.3rem;
+        color: white;
+        /*  */
+        border-radius: 8px;
+    }
 
 .content_graphics-content {
     width: 50%;
@@ -645,3 +646,20 @@ img {
             display: flex;
             justify-content: center;
         }
+
+
+/*Analytics*/
+
+.analytics input{
+    border:none;
+    font-size:2rem;
+    font-weight:bold;
+    color:#1a73e8;
+    align-self:center;
+}
+#TotalPortfolio {
+    max-width: fit-content;
+}
+.margin_right{
+    padding-right:.3rem
+}

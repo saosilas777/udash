@@ -1,8 +1,15 @@
-﻿@model UserModel
+﻿@model AnalyticsModel
+@{
+	var totalPortfolio = @Model.TotalPortfolio.ToString("F2");
+	var clientesAtivos = Model.TotalCustomer;
+	var AverageTicket = Model.AverageTicket;
+	var churns = Model.Churns;
+}
+
 
 <div class="main">
 	@await Component.InvokeAsync("Header")
-	<section class="content-cards display">
+	<section class="content-cards display analytics">
 		<div class="tickets dollar">
 			<span class="ticket_figure"><i class="fa-solid fa-hand-holding-dollar"></i></span>
 			<div class="ticket_header">
@@ -10,7 +17,9 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p id="carteiraTotal"></p>
+				
+				<p class="margin_right">R$</p>
+				<p id="TotalPortfolio">@totalPortfolio</p>
 			</div>
 		</div>
 		<div class="tickets people">
@@ -20,7 +29,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p id="clientesAtivos"></p>
+				<p>@clientesAtivos</p>
 			</div>
 		</div>
 		<div class="tickets arrow">
@@ -30,7 +39,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p id="tktMedio"></p>
+				<p>@AverageTicket</p>
 			</div>
 		</div>
 		<div class="tickets handshake">
@@ -40,7 +49,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p id="churns"></p>
+				<p>@churns</p>
 			</div>
 		</div>
 
