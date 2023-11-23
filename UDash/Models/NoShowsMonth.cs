@@ -1,8 +1,8 @@
 ﻿namespace UDash.Models
 {
-	public class MeetingsMonths
+	public class NoShowsMonth
 	{
 		public Guid Id { get; set; }
-		public string Meeting { get; set; }
+		public string NoShows { get; set; }
 	}
 }

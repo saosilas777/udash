@@ -9,7 +9,7 @@
 		public int TotalCustomer { get; set; }
 		public double AverageTicket { get; set; }
 		public int Churns { get; set; }
-		public MeetingsMonths? meetings { get; set; }
-		public NoShows? NoShows { get; set; }
+		public MeetingsMonths Meeting { get; set; } =	new MeetingsMonths();
+		public NoShowsMonth NoShows { get; set; } = new NoShowsMonth();
 	}
 }

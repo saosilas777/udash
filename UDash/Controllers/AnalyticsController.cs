@@ -10,11 +10,14 @@ namespace UDash.Controllers
 	public class AnalyticsController : Controller
 	{
 		private readonly ISection _section;
+		private readonly AnalyticsServices _analyticsServices;
 
-		public AnalyticsController(ISection section)
+		public AnalyticsController(ISection section,
+								   AnalyticsServices analytics)
 		{
 			
 			_section = section;
+			_analyticsServices = analytics;
 		}
 
 		public IActionResult Index()
@@ -24,7 +27,7 @@ namespace UDash.Controllers
 			if (section != null && TokenService.TokenIsValid(section))
 			{
 				UserModel user = TokenService.GetDataInToken(section);
-				AnalyticsModel analytics = new AnalyticsModel();
+				var analytics = _analyticsServices.AnalyticsCreate();
 				analytics.User = user;
 
 				return View(analytics);

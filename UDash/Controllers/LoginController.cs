@@ -14,6 +14,7 @@ namespace UDash.Controllers
 		private readonly IUserRepository _userRepository;
 		private readonly ISection _section;
 		private readonly ISendEmail _sendEmail;
+		
 		public LoginController(ILoginRepository loginRepository,
 							  IUserRepository userRepository,
 							  ISection section,
@@ -23,6 +24,7 @@ namespace UDash.Controllers
 			_userRepository = userRepository;
 			_section = section;
 			_sendEmail = sendEmail;
+			
 		}
 
 		public IActionResult Login()
@@ -94,7 +96,6 @@ namespace UDash.Controllers
 					if (loginDb != null && loginDb.Password == LoginServices.HashGeneration(loginViewModel.Password))
 					{
 						var authenticated = TokenService.Authenticate(loginDb.User);
-						_userRepository.SaveToken(loginDb.User,authenticated);
 						_section.UserSectionCreate(authenticated);
 						if(authenticated != null)
 						{

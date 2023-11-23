@@ -1,15 +1,15 @@
 ﻿const ctx1 = document.getElementById('myChart');
 let backgroundColor = ""
 
-const _data = [];
-const _data2 = [];
+const _data = document.getElementById('meetings').value.split(',')
+const _data2 = document.getElementById('noShows').value.split(',')
 
-for (let i = 0; i < 6; i++) {
-    _data2[i] = parseInt(Math.random() * 30)
-    _data[i] = parseInt(Math.random() * 30)
-}
+/*for (let i = 0; i < 6; i++) {
+    _data2[i] = _data[i]*30
+        
+}*/
 
-new Chart(ctx1, {
+new Chart(ctx1,{
 
     type: 'bar',
     data: {
@@ -23,7 +23,7 @@ new Chart(ctx1, {
                 // console.log(color)
                 let colors = []
                 for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] < 10) {
+                    if (_data[i] < 5) {
                         colors[i] = "rgba(201, 73, 73)"
                     }
                     else {
@@ -36,7 +36,7 @@ new Chart(ctx1, {
                 // console.log(color)
                 let colors = []
                 for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] < 10) {
+                    if (_data[i] < 5) {
                         colors[i] = "rgba(120, 222, 195)"
                     }
                     else {
@@ -108,8 +108,8 @@ new Chart(ctx2, {
             backgroundColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] < 10) {
+                for (let i = 0; i < _data2.length; i++) {
+                    if (_data2[i] < 5) {
                         colors[i] = "rgba(201, 73, 73)"
                     }
                     else {
@@ -121,8 +121,8 @@ new Chart(ctx2, {
             borderColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] < 10) {
+                for (let i = 0; i < _data2.length; i++) {
+                    if (_data2[i] < 5) {
                         colors[i] = "rgba(120, 222, 195)"
                     }
                     else {

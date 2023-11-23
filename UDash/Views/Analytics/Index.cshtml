@@ -4,6 +4,8 @@
 	var clientesAtivos = Model.TotalCustomer;
 	var AverageTicket = Model.AverageTicket;
 	var churns = Model.Churns;
+	var meetigns = Model.Meeting.Meeting;
+	var noShows = Model.NoShows.NoShows;
 }
 
 
@@ -62,6 +64,7 @@
 				<p>Reuniões mês</p>
 			</div>
 			<div class="content_graphics-graphics">
+				<input hidden id="meetings" value="@meetigns"/>				
 				<canvas id="myChart"></canvas>
 			</div>
 		</article>
@@ -70,6 +73,7 @@
 				<p>No Shows</p>
 			</div>
 			<div class="content_graphics-graphics">
+				<input hidden id="noShows" value="@noShows" />
 				<canvas id="myChart2"></canvas>
 			</div>
 		</article>

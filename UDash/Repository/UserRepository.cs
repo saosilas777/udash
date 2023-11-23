@@ -34,15 +34,6 @@ namespace UDash.Repository
 			
 		}
 
-		public bool SaveToken(UserModel user, string token)
-		{
-			user.Token = token;
-			_context.Update(user);
-			_context.SaveChanges();
-
-			return true;
-
-		}
 
 
 		public UserModel BuscarPorEmaileLogin(string login, string email)
