@@ -20,7 +20,7 @@ html, body {
 body {
     display: block;
     margin: 0;
-    background-color: #f0f2f5;
+    background-color: #1a2035;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -59,7 +59,7 @@ img {
     min-width: 11.875em;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(195deg,#42424a,#191919);
+    background-image: linear-gradient(195deg,#3f4457,#1f2847);
     position: sticky;
     top: 0;
     left: 0;
@@ -84,14 +84,20 @@ img {
     min-height: 100%;
     padding: 1em;
 }
-
-    .header_nav .logout-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        padding: 0;
+    .header_nav a {
+        color: white;
+        background-image: linear-gradient(195deg,#ec407a,#d81b60);
     }
+.logout-btn a {
+    border-radius: 8px;
+}
+.header_nav .logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
 
 .logout-btn li {
     position: sticky;
@@ -102,7 +108,7 @@ img {
     vertical-align: text-top;
     background-image: linear-gradient(195deg,#ec407a,#d81b60);
     padding: .5rem 2rem;
-    border-radius: 8px;
+    border-radius: 1rem;
     cursor: pointer;
 }
 
@@ -129,6 +135,8 @@ img {
         text-align: center;
         font-size: .9rem;
         /* border-bottom: 1px solid rgb(82, 82, 82); */
+        background-image: linear-gradient(195deg,#ec407a,#d81b60);
+        border-radius:8px;
     }
 
         .header_nav-links li:first-child {
@@ -177,6 +185,7 @@ img {
     padding: 0 1rem;
     font-size: 1.5rem;
     margin-top: 1rem;
+    color:white;
 }
 
 .main_hero-navContent {
@@ -662,4 +671,144 @@ img {
 }
 .margin_right{
     padding-right:.3rem
+}
+
+
+/*Customers*/
+
+.dataTables_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 98% !important;
+    background-color: white;
+    border: none;
+    border-radius: 1rem;
+}
+
+.dataTables_length label {
+    display: none;
+}
+
+.card_header {
+    position: relative;
+    height: 100px;
+    background-color: white;
+    border-radius: 1rem 1rem 0 0;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    margin: 0 auto 1rem;
+}
+
+.card_body {
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem 2rem 2rem;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    border-radius: 0 0 1rem 1rem;
+}
+
+    .card_body table {
+        width: 98%;
+        text-align: center;
+        border-collapse: collapse;
+        color: rgb(123, 128, 154);
+    }
+
+    .card_body th {
+        font-size: .8rem;
+    }
+
+    .card_body tr {
+        border-bottom: 1px solid #ccc;
+    }
+
+.table_float {
+    position: absolute;
+    top: -2rem;
+    width: 98%;
+    height: 6rem;
+    padding: .5rem;
+    font-size:1.5rem;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: linear-gradient(195deg,#ec407a,#d81b60);
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+.razao p {
+    margin: 0;
+    font-size: .8rem;
+}
+
+.razao :first-child {
+    font-weight: bold;
+    margin-bottom: .1rem;
+}
+
+.td_status {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.status {
+    width: fit-content;
+    align-self: center;
+    background-image: linear-gradient(195deg,#66bb6a,#43a047);
+    padding: .3rem .5rem;
+    border-radius: 1rem;
+    color: white;
+}
+.status_inactive {
+    background-image: linear-gradient(195deg,#eb4034,#e3594f);
+}
+
+    .status {
+        font-size: .8rem;
+    }
+
+.card_body a {
+    color: rgb(123, 128, 154);
+    font-weight: bold;
+}
+
+.thead_id {
+    font-weight: bold;
+}
+
+table.myTable {
+    text-align: left;
+    color: rgb(105, 105, 105);
+}
+
+.dataTables_filter label {
+    color: rgb(87, 87, 87);
+    font-weight: bold;
+}
+
+#myTable_paginate span a {
+    color: #666 !important;
+    border: none;
+}
+
+    #myTable_paginate span a:hover {
+        color: white !important;
+        background-color: rgb(59,59,59) !important;
+    }
+
+.dataTables_paginate {
+    color: #666 !important;
+}
+
+.dataTables_info {
+    display: none;
 }

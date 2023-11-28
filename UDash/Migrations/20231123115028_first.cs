@@ -12,19 +12,16 @@ namespace UDash.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MeetingsMonths",
+                name: "Meetings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Monday = table.Column<int>(type: "int", nullable: false),
-                    Tuesday = table.Column<int>(type: "int", nullable: false),
-                    Wednesday = table.Column<int>(type: "int", nullable: false),
-                    Thursday = table.Column<int>(type: "int", nullable: false),
-                    Friday = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Meeting = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeetingsMonths", x => x.Id);
+                    table.PrimaryKey("PK_Meetings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,11 +29,8 @@ namespace UDash.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Monday = table.Column<int>(type: "int", nullable: false),
-                    Tuesday = table.Column<int>(type: "int", nullable: false),
-                    Wednesday = table.Column<int>(type: "int", nullable: false),
-                    Thursday = table.Column<int>(type: "int", nullable: false),
-                    Friday = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoShows = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,22 +64,24 @@ namespace UDash.Migrations
                     TotalCustomer = table.Column<int>(type: "int", nullable: false),
                     AverageTicket = table.Column<double>(type: "float", nullable: false),
                     Churns = table.Column<int>(type: "int", nullable: false),
-                    meetingsId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    NoShowsId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    MeetingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoShowsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Analytics", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Analytics_MeetingsMonths_meetingsId",
-                        column: x => x.meetingsId,
-                        principalTable: "MeetingsMonths",
-                        principalColumn: "Id");
+                        name: "FK_Analytics_Meetings_MeetingId",
+                        column: x => x.MeetingId,
+                        principalTable: "Meetings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Analytics_NoShows_NoShowsId",
                         column: x => x.NoShowsId,
                         principalTable: "NoShows",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Analytics_Users_UserId",
                         column: x => x.UserId,
@@ -115,9 +111,9 @@ namespace UDash.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Analytics_meetingsId",
+                name: "IX_Analytics_MeetingId",
                 table: "Analytics",
-                column: "meetingsId");
+                column: "MeetingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Analytics_NoShowsId",
@@ -145,7 +141,7 @@ namespace UDash.Migrations
                 name: "Login");
 
             migrationBuilder.DropTable(
-                name: "MeetingsMonths");
+                name: "Meetings");
 
             migrationBuilder.DropTable(
                 name: "NoShows");

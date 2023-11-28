@@ -12,8 +12,8 @@ using UDash.Data;
 namespace UDash.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231122220023_first")]
-    partial class first
+    [Migration("20231128132158_customerImplement")]
+    partial class customerImplement
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,10 @@ namespace UDash.Migrations
                     b.Property<int>("Churns")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("NoShowsId")
+                    b.Property<Guid>("MeetingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("NoShowsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TotalCustomer")
@@ -49,18 +52,67 @@ namespace UDash.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("meetingsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("MeetingId");
 
                     b.HasIndex("NoShowsId");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("meetingsId");
-
                     b.ToTable("Analytics");
+                });
+
+            modelBuilder.Entity("UDash.Models.Customer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Cliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cnpj")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdSense")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdStarford")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Loja")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProdutoFiscal")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RazaoSocial")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("ValorMensal")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("UDash.Models.LoginModel", b =>
@@ -93,46 +145,30 @@ namespace UDash.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Friday")
-                        .HasColumnType("int");
+                    b.Property<string>("Meeting")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Monday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Thursday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tuesday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Wednesday")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MeetingsMonths");
+                    b.ToTable("Meetings");
                 });
 
-            modelBuilder.Entity("UDash.Models.NoShows", b =>
+            modelBuilder.Entity("UDash.Models.NoShowsMonth", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Friday")
-                        .HasColumnType("int");
+                    b.Property<string>("NoShows")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Monday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Thursday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tuesday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Wednesday")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -170,9 +206,17 @@ namespace UDash.Migrations
 
             modelBuilder.Entity("UDash.Models.AnalyticsModel", b =>
                 {
-                    b.HasOne("UDash.Models.NoShows", "NoShows")
+                    b.HasOne("UDash.Models.MeetingsMonths", "Meeting")
                         .WithMany()
-                        .HasForeignKey("NoShowsId");
+                        .HasForeignKey("MeetingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UDash.Models.NoShowsMonth", "NoShows")
+                        .WithMany()
+                        .HasForeignKey("NoShowsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("UDash.Models.UserModel", "User")
                         .WithMany()
@@ -180,15 +224,11 @@ namespace UDash.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UDash.Models.MeetingsMonths", "meetings")
-                        .WithMany()
-                        .HasForeignKey("meetingsId");
+                    b.Navigation("Meeting");
 
                     b.Navigation("NoShows");
 
                     b.Navigation("User");
-
-                    b.Navigation("meetings");
                 });
 
             modelBuilder.Entity("UDash.Models.LoginModel", b =>

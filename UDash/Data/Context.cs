@@ -10,8 +10,10 @@ namespace UDash.Data
 		}
 		public DbSet<UserModel> Users { get; set; }
 		public DbSet<LoginModel> Login { get; set; }
-
 		public DbSet<AnalyticsModel> Analytics { get; set; }
+		public DbSet<MeetingsMonths> Meetings { get; set; }
+		public DbSet<NoShowsMonth> NoShows { get; set; }
+		public DbSet<Customer> Customers { get; set; }
 
 
 

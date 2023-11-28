@@ -1,0 +1,201 @@
+﻿@model List<Customer>
+
+
+<div class="main">
+	@await Component.InvokeAsync("Header")
+		<section id="table_row">
+			<!-- <table id="myTable2" class="table_Securytis"> -->
+			<div class="card">
+				<div class="card_header">
+					<div class="table_float">Customers</div>
+				</div>
+				<div class="card_body">
+					<table id="myTable" class="myTable">
+						<thead>
+							<tr>
+								<th class="thead_id">
+									Id Sens.
+								</th>
+								<th>
+									Id Starford
+								</th>
+								<th>
+									CNPJ/CPF
+									Razão Social
+								</th>
+								<th>
+									Status
+								</th>
+								<th>
+									Loja
+								</th>
+								<th>
+									Cliente
+								</th>
+								<th>
+									Produto Fiscal
+								</th>
+								<th>
+									FR
+								</th>
+								<th>
+									Valor
+								</th>
+								<th>
+									Ações
+								</th>
+							</tr>
+						</thead>
+						<tbody id="tbody">
+							@foreach(var item in Model){
+								<tr>
+									<td>
+										<p class="thead_id">@item.IdSense</p>
+									</td>
+									<td>
+										<p class="thead_id">@item.IdStarford</p>
+									</td>
+									<td>
+										<div class="razao">
+											<p>
+												@item.RazaoSocial
+											</p>
+											<p>
+												@item.Cnpj
+											</p>
+										</div>
+									</td>
+									<td class="td_status">
+
+										@if (item.Status == true)
+										{
+											<p class="status">
+												Ativo
+											</p>
+											;
+										}
+										else
+										{
+										<p class="status status_inactive">
+												Inativo
+											</p>
+										}
+									</td>
+									<td>
+										<p>@item.Loja</p>
+									</td>
+									<td>
+										<p>@item.Cliente</p>
+									</td>
+									<td>
+										<p>@item.ProdutoFiscal</p>
+									</td>
+									<td>
+										<p>@item.Fr</p>
+									</td>
+									<td>
+										<p>@item.ValorMensal</p>
+									</td>
+									<td>
+										<a href="#">Editar</a>
+									</td>
+								</tr>
+
+							}
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+	@*		<div class="card">
+				<div class="card_header">
+					<div class="table_float">HeadLines</div>
+				</div>
+				<div class="card_body">
+					<table id="myTable2" class="myTable">
+						<thead>
+							<tr>
+								<th class="thead_id">
+									Id
+								</th>
+								<th>
+									Razão Social
+								</th>
+								<th>
+									UF
+								</th>
+								<th>
+									Status
+								</th>
+								<th>
+									Data de cadastro
+								</th>
+								<th>
+									Ações
+								</th>
+							</tr>
+						</thead>
+						<tbody id="tbody">
+							<tr>
+								<td>
+									<p class="thead_id">abcas5867</p>
+								</td>
+								<td>
+									<div class="razao">
+										<p>
+											Mercado do Manuel
+										</p>
+										<p>
+											01.000.000/0001-00
+										</p>
+									</div>
+								</td>
+								<td>
+									<p>SP</p>
+								</td>
+								<td class="td_status">
+									<p class="status">Ativo</p>
+								</td>
+								<td>
+									<p>01/01/2000</p>
+								</td>
+								<td>
+									<a href="#">Editar</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p class="thead_id">abcas5868</p>
+								</td>
+								<td>
+									<div class="razao">
+										<p>
+											Mercado da Maria
+										</p>
+										<p>
+											01.000.000/0001-00
+										</p>
+									</div>
+								</td>
+								<td>
+									<p>RJ</p>
+								</td>
+								<td class="td_status">
+									<p class="status">Ativo</p>
+								</td>
+								<td>
+									<p>01/01/2010</p>
+								</td>
+								<td>
+									<a href="#">Editar</a>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</div>
+			</div>*@
+		</section>
+	
+</div>

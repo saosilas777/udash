@@ -12,11 +12,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 		  integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
 		  crossorigin="anonymous" referrerpolicy="no-referrer" />
-	@*<link rel="stylesheet" href="/style.css">*@
-	@*
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+	<link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" rel="stylesheet" />
+
+
+	@*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-	@*<link rel="stylesheet" href="~/UDash.styles.css" asp-append-version="true" />*@
+	
 </head>
 <body>
 	<div class="aside">
@@ -31,12 +33,15 @@
 					</div>
 
 					<span class="horizontal-line"></span>
-						<ul class="header_nav-links">
-							<li class="active">Home</li>
-							<li>Analytics</li>
-							<li>Security</li>
-							<li>Customers</li>
-						</ul>
+					<ul class="header_nav-links">
+						@*<a asp-controller="Home" asp-action="Index">
+						<li class="active">Home</li></a>*@
+						<a asp-controller="Analytics" asp-action="Index">
+						<li>Analytics</li></a>
+						@*<li>Security</li>*@
+						<a asp-controller="Customer" asp-action="Index">
+						<li>Customers</li></a>
+					</ul>
 				</div>
 				<ul class="logout-btn">
 					<a asp-controller="Login" asp-action="Logout">
@@ -47,23 +52,27 @@
 						Logout
 					</li>
 					</a>
-					
+
 				</ul>
 			</nav>
 		</header>
 
 	</div>
 	<main class="main_hero">
-				@RenderBody()
-		</main>
-	
-	<script src="/js/index.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="/js/chart.js"></script>
+		@RenderBody()
+	</main>
 
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-@*	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+			integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+
+	<script src="/js/index.js"></script>
+@*	<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+	@*	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/chart.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

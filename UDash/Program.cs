@@ -11,6 +11,7 @@ using UDash.Helpers;
 using UDash.Repository;
 using UDash.Services;
 using UDash.Helper;
+using UDash.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ISendEmail, SendEmail>();
 builder.Services.AddScoped<AnalyticsServices, AnalyticsServices>();
+builder.Services.AddScoped<CustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<ISection, Section>();
 
 builder.Services.AddHttpContextAccessor();
