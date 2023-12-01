@@ -26,8 +26,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ISendEmail, SendEmail>();
-builder.Services.AddScoped<AnalyticsServices, AnalyticsServices>();
-builder.Services.AddScoped<CustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<SendFileService, SendFileService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<ISection, Section>();
 
 builder.Services.AddHttpContextAccessor();

@@ -3,6 +3,17 @@
 
 <div class="main">
 	@await Component.InvokeAsync("Header")
+	<div class="envio-arquivos">
+		<div class="arquivos_title">
+			<span>Faça o upload de sua planilha <b class="excel">excel</b> aqui!</span>
+		</div>
+		
+		<form asp-action="SendFile" asp-controller="SendFile" method="post" enctype="multipart/form-data">
+			<label for="btn-send-file" class="btn btn-primary input-file col-md-2 text-center">Procurar Arquivo</label>
+			<input id="btn-send-file" class="btn btn-success input-file col-md-2 text-center" name="uploadFile" type="file" multiple hidden />
+			<button class="col-md-2 input-file-btn" type="submit">Enviar</button>
+		</form>
+	</div>
 	<section id="table_row">
 		<!-- <table id="myTable2" class="table_Securytis"> -->
 		<div class="card">
@@ -198,5 +209,8 @@
 		</div>
 		</div>*@
 	</section>
-
 </div>
+	<footer class="footer">
+		<p> &copy; <a href="#">U.Code</a> development</p>
+		<p class="footer_link">Visite nosso site <a href="#">U.code</a> </p>
+	</footer>

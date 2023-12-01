@@ -104,5 +104,12 @@ namespace UDash.Repository
 			CreateAll(_customers);
 			return _customers;
 		}
+
+		public List<CustomerModel> AdicionarTodos(List<CustomerModel> customers)
+		{
+			_context.AddRange(customers);
+			_context.SaveChanges();
+			return customers;
+		}
 	}
 }

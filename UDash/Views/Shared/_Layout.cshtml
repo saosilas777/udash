@@ -32,13 +32,13 @@
 
 					<span class="horizontal-line"></span>
 					<ul class="header_nav-links">
-						<a asp-controller="Home" asp-action="Index">
-						<li id="Home" class="home">Home</li></a>
-						<a asp-controller="Analytics" asp-action="Index" >
-						<li id="Analytics" class="Analytics">Analytics</li></a>
+						
+						<li class="home"><a id="Home" asp-controller="Home" asp-action="Index">Home</a></li>
+						
+						<li class="Analytics"><a id="Analytics" asp-controller="Analytics" asp-action="Index">Analytics</a></li>
 						@*<li>Security</li>*@
-						<a asp-controller="Customer" asp-action="Index">
-						<li id="Customers" class="Customers">Customers</li></a>
+						
+						<li class="Customers"><a id="Customers" asp-controller="Customer" asp-action="Index">Customers</a></li>
 					</ul>
 				</div>
 				<ul class="logout-btn">

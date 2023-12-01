@@ -10,9 +10,9 @@ namespace UDash.Controllers
 {
 	public class CustomerController : Controller
 	{
-		private readonly CustomerRepository _customer;
+		private readonly ICustomerRepository _customer;
 		private readonly ISection _section;
-		public CustomerController(CustomerRepository customer,
+		public CustomerController(ICustomerRepository customer,
 									ISection section
 									)
 		{
