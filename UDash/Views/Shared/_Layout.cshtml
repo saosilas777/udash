@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@ViewData["Title"] - UDash</title>
+	<title>UDash</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap" rel="stylesheet">
@@ -15,8 +15,6 @@
 
 	<link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" rel="stylesheet" />
 
-
-	@*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	
 </head>
@@ -34,13 +32,13 @@
 
 					<span class="horizontal-line"></span>
 					<ul class="header_nav-links">
-						@*<a asp-controller="Home" asp-action="Index">
-						<li class="active">Home</li></a>*@
-						<a asp-controller="Analytics" asp-action="Index">
-						<li>Analytics</li></a>
+						<a asp-controller="Home" asp-action="Index">
+						<li id="Home" class="home">Home</li></a>
+						<a asp-controller="Analytics" asp-action="Index" >
+						<li id="Analytics" class="Analytics">Analytics</li></a>
 						@*<li>Security</li>*@
 						<a asp-controller="Customer" asp-action="Index">
-						<li>Customers</li></a>
+						<li id="Customers" class="Customers">Customers</li></a>
 					</ul>
 				</div>
 				<ul class="logout-btn">
@@ -62,17 +60,13 @@
 		@RenderBody()
 	</main>
 
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 	<script src="https://code.jquery.com/jquery-3.7.1.slim.js"
 			integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 	<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
-
 	<script src="/js/index.js"></script>
-@*	<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
-	@*	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 	<script src="~/js/site.js" asp-append-version="true"></script>
-	<script src="~/js/chart.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

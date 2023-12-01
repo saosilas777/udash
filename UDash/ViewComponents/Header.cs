@@ -24,8 +24,9 @@ namespace UDash.ViewComponents
 
 				throw new Exception(e.Message);
 			}
-			
+
 		}
+
 
 	}
 }

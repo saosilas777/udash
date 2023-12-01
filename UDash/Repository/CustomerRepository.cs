@@ -2,6 +2,7 @@
 using UDash.Data;
 using UDash.Interfaces;
 using UDash.Models;
+using UDash.Models.ViewModels;
 using UDash.Services;
 
 namespace UDash.Repository
@@ -18,17 +19,17 @@ namespace UDash.Repository
 		}
 
 
-		public Customer BuscarPorId(Guid id)
+		public CustomerModel BuscarPorId(Guid id)
 		{
 			return _context.Customers.FirstOrDefault(x => x.Id == id);
 		}
 
-		public List<Customer> BuscarTodos(Guid id)
+		public List<CustomerModel> BuscarTodos(Guid id)
 		{
 			return _context.Customers.Where(x => x.UserId == id).ToList();
 		}
 
-		public bool Create(Customer customer)
+		public bool Create(CustomerModel customer)
 		{
 			string token = _section.GetUserSection();
 			UserModel user = TokenService.GetDataInToken(token);
@@ -38,7 +39,7 @@ namespace UDash.Repository
 			_context.SaveChanges();
 			return true;
 		}
-		public bool CreateAll(List<Customer> customers)
+		public bool CreateAll(List<CustomerModel> customers)
 		{
 			
 			_context.AddRange(customers);
@@ -46,22 +47,37 @@ namespace UDash.Repository
 			return true;
 		}
 
-		public bool Deletar(Guid id)
+		public bool Deletar(CustomerModel customer)
 		{
-			throw new NotImplementedException();
+			_context.Remove(customer);
+			_context.SaveChanges();
+			return true;
 		}
 
-		public Customer Editar(Customer customer)
+		public bool Editar(CustomerViewModel customer)
 		{
-			throw new NotImplementedException();
+			CustomerModel customerDb = BuscarPorId(customer.Id);
+
+			customerDb.Status = customer.Status;
+			customerDb.RazaoSocial = customer.RazaoSocial;
+			customerDb.Loja = customer.Loja;
+			customerDb.Cliente = customer.Cliente;
+			customerDb.ProdutoFiscal = customer.ProdutoFiscal;
+			customerDb.Fr = customer.Fr;
+			customerDb.ValorMensal = customer.ValorMensal;
+
+			_context.Update(customerDb);
+			_context.SaveChanges();
+			return true;
+
 		}
-		public List<Customer> CreateAt()
+		public List<CustomerModel> CreateAt()
 		{
-			List<Customer> _customers = new List<Customer>();
+			List<CustomerModel> _customers = new List<CustomerModel>();
 
 			for(int i = 0;i< 20; i++)
 			{
-				Customer customer = new Customer
+				CustomerModel customer = new CustomerModel
 				{
 					IdSense = new Guid().ToString().Substring(0, 6),
 					IdStarford = new Guid().ToString().Substring(0, 6),

@@ -4,7 +4,7 @@
 	{
 		public Guid Id { get; set; }
 		public Guid UserId { get; set; }
-		public UserModel User { get; set; }
+		public UserModel User { get; set; } = new UserModel();
 		public double TotalPortfolio { get; set; }
 		public int TotalCustomer { get; set; }
 		public double AverageTicket { get; set; }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gx48PvXlY+21Yu2lDW4kczvAS8WntxIl/WOd4rko6MI=",
+  "Hash": "tlxpJvoRpEecm+W+GDiirNhMOvtU4Y83RL5YCDT7VEk=",
   "Source": "UDash",
   "BasePath": "_content/UDash",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\chart.js"
+    },
+    {
+      "Identity": "Z:\\Udash\\UDash\\UDash\\wwwroot\\js\\customer.js",
+      "SourceId": "UDash",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\Udash\\UDash\\UDash\\wwwroot\\",
+      "BasePath": "_content/UDash",
+      "RelativePath": "js/customer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\customer.js"
     },
     {
       "Identity": "Z:\\Udash\\UDash\\UDash\\wwwroot\\js\\index.js",

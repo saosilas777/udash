@@ -5,11 +5,11 @@ namespace UDash.Interfaces
 {
 	public interface ICustomerRepository
 	{
-		bool Create(Customer customer);
-		Customer BuscarPorId(Guid id);
-		List<Customer> BuscarTodos(Guid id);
-		Customer Editar(Customer customer);
-		bool Deletar(Guid id);
+		bool Create(CustomerModel customer);
+		CustomerModel BuscarPorId(Guid id);
+		List<CustomerModel> BuscarTodos(Guid id);
+		bool Editar(CustomerViewModel customer);
+		bool Deletar(CustomerModel customer);
 
 	}
 }

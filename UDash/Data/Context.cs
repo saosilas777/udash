@@ -13,7 +13,7 @@ namespace UDash.Data
 		public DbSet<AnalyticsModel> Analytics { get; set; }
 		public DbSet<MeetingsMonths> Meetings { get; set; }
 		public DbSet<NoShowsMonth> NoShows { get; set; }
-		public DbSet<Customer> Customers { get; set; }
+		public DbSet<CustomerModel> Customers { get; set; }
 
 
 

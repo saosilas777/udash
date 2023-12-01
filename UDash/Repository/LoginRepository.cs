@@ -23,7 +23,7 @@ namespace UDash.Repository
 		public bool Create(LoginModel login)
 		{
 
-			LoginModel LoginsDB = _context.Login.FirstOrDefault(x => x.Login == login.Login);
+			LoginModel? LoginsDB = _context.Login.FirstOrDefault(x => x.Login == login.Login);
 			if (LoginsDB == null)
 			{
 				login.User.Perfil = Enums.Perfil.padrao;
@@ -40,14 +40,14 @@ namespace UDash.Repository
 		}
 		public LoginModel BuscarPorLogin(string login)
 		{
-			LoginModel loginModelDb = _context.Login.Include(x => x.User).FirstOrDefault(x => x.Login == login);
+			LoginModel? loginModelDb = _context.Login.Include(x => x.User).FirstOrDefault(x => x.Login == login);
 
 			return loginModelDb;
 		}
 		public bool BuscarPorEmail(string email)
 		{
 
-			UserModel userModelDb = _context.Users.FirstOrDefault(x => x.Email == email);
+			UserModel? userModelDb = _context.Users.FirstOrDefault(x => x.Email == email);
 			if (userModelDb == null) return false;
 			return true;
 		}

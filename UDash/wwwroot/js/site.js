@@ -9,8 +9,47 @@
 
 $(document).ready(function () {
     getDataTable("#myTable");
-   
+    /*urlActual()*/
+
 });
+
+const customer = document.getElementById('Customers')
+const analytics = document.getElementById('Analytics')
+const home = document.getElementById('Home')
+
+const url = window.location.pathname
+
+if (url.includes('Home')) {
+    home.classList.add('bgImageLink')
+}
+if (url.includes('Analytics')) {
+    analytics.classList.add('bgImageLink')
+}
+if (url.includes('Customer')) {
+    customer.classList.add('bgImageLink')
+}
+
+
+
+/*function urlActual() {
+    let url = window.location.pathname
+    switch (url) { 
+        case '/Home/Index':
+            home.style.backgroundImage = 'linear-gradient(195deg,#ec407a,#d81b60)'
+            break
+        case '/Customer/Index':
+            customer.style.backgroundImage = 'linear-gradient(195deg,#ec407a,#d81b60)'
+            break
+         
+
+
+    }
+
+
+
+
+
+}*/
 
 
 

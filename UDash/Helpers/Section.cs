@@ -13,9 +13,17 @@ namespace UDash.Helpers
 
 		public string GetUserSection()
 		{
-			string userSection = _httpContext.HttpContext.Session.GetString("Token");
-			if (string.IsNullOrEmpty(userSection)) return null;
-			return userSection;
+			try
+			{
+				string? userSection = _httpContext.HttpContext.Session.GetString("Token");
+				if (string.IsNullOrEmpty(userSection)) return null;
+				return userSection;
+			}
+			catch (Exception e)
+			{
+
+				throw new Exception(e.Message);
+			}
 		}
 
 		public void UserSectionCreate(string token)
