@@ -27,6 +27,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ISendEmail, SendEmail>();
 builder.Services.AddScoped<SendFileService, SendFileService>();
+builder.Services.AddSingleton<AnalyticsServices, AnalyticsServices>();
+
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<ISection, Section>();
 

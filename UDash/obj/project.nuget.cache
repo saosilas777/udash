@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/9XwDyO1QjcBQUSwtt+j6D6Q19xIOrXA5wEdi4R+NlKL/lvTz9njq6ScvoGoBR+VZ1gTB/XJYzYWle8Hqsor8w==",
+  "dgSpecHash": "ctp14LzHt24hf7Vrax5RP8HEsSYyA1CxLAzy+f90e85z16av9bgoUueLTmh0o3kTgranBAzslTBqFu+2jDj9JQ==",
   "success": true,
-  "projectFilePath": "Z:\\Udash\\UDash\\UDash\\UDash.csproj",
+  "projectFilePath": "Z:\\Udash\\udash\\UDash\\UDash.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\saosi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\saosi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

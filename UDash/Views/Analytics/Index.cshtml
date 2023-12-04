@@ -1,15 +1,13 @@
 ﻿@model AnalyticsModel
-@{
-	var totalPortfolio = @Model.TotalPortfolio.ToString("F2");
-	var clientesAtivos = Model.TotalCustomer;
-	var AverageTicket = Model.AverageTicket;
-	var churns = Model.Churns;
-	var meetigns = Model.Meeting.Meeting;
-	var noShows = Model.NoShows.NoShows;
+
+@if(Model == null){
+	<div class="main">
+	<div>Loading</div>
+	</div>
 }
-
-
-<div class="main">
+@if (Model != null)
+{
+	<div class="main">
 	<div id="atual"></div>
 	@await Component.InvokeAsync("Header")
 	<section class="content-cards display analytics">
@@ -22,7 +20,7 @@
 			<div class="ticket_content">
 				
 				<p class="margin_right">R$</p>
-				<p id="TotalPortfolio">@totalPortfolio</p>
+				<p id="TotalPortfolio">@Model.TotalPortfolio.ToString("F2")</p>
 			</div>
 		</div>
 		<div class="tickets people">
@@ -32,7 +30,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@clientesAtivos</p>
+				<p>@Model.TotalCustomer</p>
 			</div>
 		</div>
 		<div class="tickets arrow">
@@ -42,7 +40,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@AverageTicket</p>
+				<p>@Model.AverageTicket</p>
 			</div>
 		</div>
 		<div class="tickets handshake">
@@ -52,7 +50,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@churns</p>
+				<p>@Model.Churns</p>
 			</div>
 		</div>
 
@@ -65,7 +63,7 @@
 				<p>Reuniões mês</p>
 			</div>
 			<div class="content_graphics-graphics">
-				<input hidden id="meetings" value="@meetigns"/>				
+				<input hidden id="meetings" value="@Model.Meeting.Meeting"/>				
 				<canvas id="myChart"></canvas>
 			</div>
 		</article>
@@ -74,7 +72,7 @@
 				<p>No Shows</p>
 			</div>
 			<div class="content_graphics-graphics">
-				<input hidden id="noShows" value="@noShows" />
+				<input hidden id="noShows" value="@Model.NoShows.NoShows" />
 				<canvas id="myChart2"></canvas>
 			</div>
 		</article>
@@ -88,4 +86,6 @@
 	<p class="footer_link">Visite nosso site <a href="#">U.code</a> </p>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/js/chart.js" asp-append-version="true"></script>
+<script src="/js/chart.js"></script>
+}
+
