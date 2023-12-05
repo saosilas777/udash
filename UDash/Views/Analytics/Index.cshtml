@@ -8,7 +8,6 @@
 @if (Model != null)
 {
 	<div class="main">
-	<div id="atual"></div>
 	@await Component.InvokeAsync("Header")
 	<section class="content-cards display analytics">
 		<div class="tickets dollar">
@@ -60,7 +59,7 @@
 	<section class="content_graphics-cards">
 		<article class="tickets">
 			<div class="content_graphics-content">
-				<p>Reuniões mês</p>
+				<p>Reuniões da semana</p>
 			</div>
 			<div class="content_graphics-graphics">
 				<input hidden id="meetings" value="@Model.Meeting.Meeting"/>				
@@ -69,13 +68,29 @@
 		</article>
 		<article class="tickets">
 			<div class="content_graphics-content">
-				<p>No Shows</p>
+				<p>No Shows da semana</p>
 			</div>
 			<div class="content_graphics-graphics">
 				<input hidden id="noShows" value="@Model.NoShows.NoShows" />
 				<canvas id="myChart2"></canvas>
 			</div>
 		</article>
+			<article class="tickets">
+				<div class="content_graphics-content">
+					<p>Reuniões mês</p>
+				</div>
+				<div class="content_graphics-graphics">
+					<canvas id="myChart3"></canvas>
+				</div>
+			</article>
+			<article class="tickets">
+				<div class="content_graphics-content">
+					<p>No Shows mês</p>
+				</div>
+				<div class="content_graphics-graphics">
+					<canvas id="myChart4"></canvas>
+				</div>
+			</article>
 
 	</section>
 	

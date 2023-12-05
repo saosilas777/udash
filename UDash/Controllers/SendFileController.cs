@@ -23,9 +23,9 @@ namespace UDash.Controllers
 		public IActionResult SendFile(IFormFile uploadFile)
 		{
 			List<CustomerModel> contatos = _sendFileServices.ReadXls(uploadFile);
-			List<CustomerModel> newList = VerifyDuplicate(contatos);
-			_customerRepository.AdicionarTodos(newList);
-			return RedirectToAction("Index", "Contato");
+			/*List<CustomerModel> newList = VerifyDuplicate(contatos);*/
+			_customerRepository.AdicionarTodos(contatos);
+			return RedirectToAction("Index", "Customer");
 		}
 
 		public IActionResult EnviarArquivo()

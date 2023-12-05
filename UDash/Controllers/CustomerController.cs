@@ -11,22 +11,20 @@ namespace UDash.Controllers
 	public class CustomerController : Controller
 	{
 		private readonly ICustomerRepository _customer;
-		private readonly ISection _section;
+		private readonly SectionService _sectionService;
 		public CustomerController(ICustomerRepository customer,
-									ISection section
+									SectionService sectionService
 									)
 		{
 			_customer = customer;
-			_section = section;
+			_sectionService = sectionService;
 			
 		}
 		public IActionResult Index()
 		{
-			string token = _section.GetUserSection();
-			UserModel user = TokenService.GetDataInToken(token);
+			var user = _sectionService.Section();
 			List<CustomerModel> customers = _customer.BuscarTodos(user.Id);
 			/*List<Customer> customers = _customer.CreateAt();*/
-			string localPage = "#fff";
 			return View(customers);
 		}
 

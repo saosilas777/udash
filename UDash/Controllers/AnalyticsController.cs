@@ -9,27 +9,25 @@ namespace UDash.Controllers
 {
 	public class AnalyticsController : Controller
 	{
-		private readonly ISection _section;
+		private readonly SectionService _sectionService;
 		private readonly AnalyticsServices _analyticsServices;
 
-		public AnalyticsController(ISection section, AnalyticsServices analytics)
+		public AnalyticsController(SectionService sectionService, AnalyticsServices analytics)
 		{			
-			_section = section;			
+			_sectionService = sectionService;			
 			_analyticsServices = analytics;
 		}
 
 		public IActionResult Index()
 		{
-			var section = _section.GetUserSection();
 
-			if (section != null && TokenService.TokenIsValid(section))
+			var user = _sectionService.Section();
+			if (user != null)
 			{
-				UserModel user = TokenService.GetDataInToken(section);
 				var analytics = _analyticsServices.AnalyticsCreate();
 				analytics.User = user;
 				return View(analytics);
 			};
-			_section.UserSectionRemove();
 			return RedirectToAction("Login", "Login");
 		}
 

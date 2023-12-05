@@ -2,61 +2,67 @@
 
 <div class="main">
 	@await Component.InvokeAsync("Header")
-    <section class="customerBody">
-        <article class="customerCard">
-            <h3>Informações</h3>
-            <div class="card_container">
-                <form asp-action="Edit" asp-action="Delete" asp-controller="Customer" method="post" class="card_content" id="EditForm">
-                    <input asp-for="@Model.Id" hidden/>
-                    <div class="contentHeader">
-                        <span><b>Id Sens.:</b> @Model.IdSense</span>
-                        <span><b>Id Starford.:</b> @Model.IdStarford</span>
-                        <span><b>Cnpj:</b> @Model.Cnpj</span>
-                    </div>
-                    <div class="contentBody">
-                        <div class="contentBody-labels">
-                            <label for="select_disabled">Status:</label>
-                            <label>Razão Social:</label>
-                            <label>Loja:</label>
-                            <label>Cliente:</label>
-                            <label>Produto Fiscal:</label>
-                            <label>Fr:</label>
-                            <label>Valor Mensal:</label>
-                        </div>
-                        <div class="contentBody-inputs">
-                            <select id="select_disabled" class="editable" type="text" value="@Model.Status" asp-for="@Model.Status"
-                                    disabled>
-                                <option value="true">Ativo</option>
-                                <option value="false">Inativo</option>                        
-                            </select>
-                            <input class="editable" value="@Model.RazaoSocial" asp-for="@Model.RazaoSocial" readonly />
-                            <input class="editable" value="@Model.Cliente" asp-for="@Model.Cliente" readonly />
-                            <input class="editable" value="@Model.Loja" asp-for="@Model.Loja" readonly />
-                            <input class="editable" value="@Model.ProdutoFiscal" asp-for="@Model.ProdutoFiscal" readonly />
-                            <input class="editable" value="@Model.Fr" asp-for="@Model.Fr" readonly />
-                            <input class="editable" value="@Model.ValorMensal" asp-for="@Model.ValorMensal" readonly />
-                        </div>
-                    </div>
-                    <span id="deleteAlert" class="deleteAlert">Deseja realmente deletar o cliente: <b>@Model.Cliente</b></span>
-                    <div class="card_cta">
-                        <button type="button" class="card_cta-edit" id="card_cta-edit">Editar</button>
-                        <button type="button" class="card_cta-delet" id="card_cta-delet">Deletar</button>
-                        <button type="button" class="card_cta-delet cancelDelete" id="cancelDelete">Cancelar</button>
+	<section class="customerBody">
+		<article class="customerCard">
+			<h3>Informações</h3>
+			<div class="card_container">
+				<form asp-action="Edit" asp-action="Delete" asp-controller="Customer" method="post" class="card_content" id="EditForm">
+					<input asp-for="@Model.Id" hidden />
+					<div class="contentHeader">
+						<span><b>Id Sens.:</b> @Model.IdSense</span>
+						<span><b>Id Starford.:</b> @Model.IdStarford</span>
+						<span><b>Cnpj:</b> @Model.Cnpj</span>
+					</div>
+					<div class="contentBody">
+						<div class="contentBody-labels">
+							<label for="select_disabled">Status:</label>
+							<label>Razão Social:</label>
+							<label>Loja:</label>
+							<label>Cliente:</label>
+							<label>Produto Fiscal:</label>
+							<label>Fr:</label>
+							<label>Valor Mensal:</label>
+						</div>
+						<div class="contentBody-inputs">
+							<select id="select_disabled" type="text" value="@Model.Status" asp-for="@Model.Status"
+									disabled>
+								<option value="true">Ativo</option>
+								<option value="false">Inativo</option>
+							</select>
+							<input class="editable" value="@Model.RazaoSocial" asp-for="@Model.RazaoSocial" disabled />
+							<input class="editable" value="@Model.Cliente" asp-for="@Model.Cliente" disabled />
+							<input class="editable" value="@Model.Loja" asp-for="@Model.Loja" disabled />
+							<input class="editable" value="@Model.ProdutoFiscal" asp-for="@Model.ProdutoFiscal" disabled />
+							<input class="editable" value="@Model.Fr" asp-for="@Model.Fr" disabled />
+							<input class="editable" value="@Model.ValorMensal" asp-for="@Model.ValorMensal" disabled />
+						</div>
+						<div id="deleteAlert"  class="deleteAlert">
+							<span  >Deseja realmente deletar o cliente: <b>@Model.Cliente</b></span>
+						</div>
+					</div>
+					<div class="card_cta">
+						<button type="button" class="card_cta-edit" id="btnEdit">Editar</button>
 
-                        <button type="button" class="card_cta-saveChanges" id="card_cta-saveChanges">Salvar</button>
-                        <button type="button" class="card_cta-saveChanges" id="confirmDelete">Confirmar</button>
+						<button type="button" class="card_cta-delet" id="deletarBtn">Deletar</button>
+						<button type="reset" hidden id="btnReset">reset</button>
 
-                        <button id="btnSubmitDelete" class="btnSubmit" type="submit" asp-action="Delete"></button>
-                        <button id="btnSubmitEdit" class="btnSubmit" type="submit" asp-action="Edit"></button>
-                    </div>
-                </form>
-            </div>
-        </article>
-    </section>
-   
+
+						<button type="button" class="card_cta-delet cancelDelete" id="cancelDelete">Cancelar</button>
+						<button type="button" class="card_cta-saveChanges" id="card_cta-saveChanges">Salvar</button>
+
+						<button type="button" class="card_cta-saveChanges" id="confirmDelete">Confirmar</button>
+
+						<button id="btnSubmitDelete" class="btnSubmit" type="submit" asp-action="Delete"></button>
+						<button id="btnSubmitEdit" class="btnSubmit" type="submit" asp-action="Edit"></button>
+					</div>
+				</form>
+			</div>
+		</article>
+	</section>
+
 </div>
 <footer class="footer">
-    <p> &copy; <a href="#">U.Code</a> development</p>
-    <p class="footer_link">Visite nosso site <a href="#">U.code</a> </p>
+	<p> &copy; <a href="#">U.Code</a> development</p>
+	<p class="footer_link">Visite nosso site <a href="#">U.code</a> </p>
 </footer>
 <script src="/js/customer.js"></script>

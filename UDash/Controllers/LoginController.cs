@@ -12,36 +12,36 @@ namespace UDash.Controllers
 	{
 		private readonly ILoginRepository _loginRepository;
 		private readonly IUserRepository _userRepository;
-		private readonly ISection _section;
+		private readonly SectionService _sectionService;
+
 		private readonly ISendEmail _sendEmail;
 		
 		public LoginController(ILoginRepository loginRepository,
 							  IUserRepository userRepository,
-							  ISection section,
+							  SectionService sectionService,
 							  ISendEmail sendEmail)
 		{
 			_loginRepository = loginRepository;
 			_userRepository = userRepository;
-			_section = section;
+			_sectionService = sectionService;
 			_sendEmail = sendEmail;
 			
 		}
 
 		public IActionResult Login()
 		{
-			var section = _section.GetUserSection();
+			var user = _sectionService.Section();
 			
-			if (section != null && TokenService.TokenIsValid(section))
+			if (user != null)
 			{
 			  return RedirectToAction("Index", "Home");
 			};
-			_section.UserSectionRemove();
 			return View();
 		}
 
 		public IActionResult Logout()
 		{
-			_section.UserSectionRemove();
+			_sectionService.RemoveSection();
 			return RedirectToAction("Login");
 		}
 		public IActionResult SignUp()
@@ -96,7 +96,7 @@ namespace UDash.Controllers
 					if (loginDb != null && loginDb.Password == LoginServices.HashGeneration(loginViewModel.Password))
 					{
 						var authenticated = TokenService.Authenticate(loginDb.User);
-						_section.UserSectionCreate(authenticated);
+						_sectionService.CreateSection(authenticated);
 						if(authenticated != null)
 						{
 							return RedirectToAction("Index", "Home");

@@ -43,7 +43,7 @@ namespace UDash.Repository
 
 		public UserModel BuscarPorId(Guid id)
 		{
-			throw new NotImplementedException();
+			return _context.Users.FirstOrDefault(x => x.Id == id);
 		}
 
 		public UserModel BuscarPorLogin(LoginViewModel login)
