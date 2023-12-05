@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 
 html, body {
     height: 100vh;
+    font-size:16px;
 }
 
 body {
@@ -765,6 +766,7 @@ img {
 
 .card_body {
     display: flex;
+    flex-direction:column;
     justify-content: center;
     padding: 0 2rem 2rem 2rem;
     background-color: rgb(255, 255, 255);
@@ -879,7 +881,9 @@ table.myTable {
 .table_actions {
     font-size: .8rem
 }
-
+.tbody, .tbody tr th{
+    text-align: center;
+}
 
 
 /*Customer*/
@@ -1040,15 +1044,26 @@ table.myTable {
 .bgImageLink {
     background-image: linear-gradient(195deg,#ec407a,#d81b60)
 }
-
-/*/////////////////////////////////////////////////////////////////////////////////////////////*
-/*SendFile*/
-.envio-arquivos {
-    background-color: white;
+.TotalInvestiment {
+    margin: 0;
+    background-color: #1f2847;
     padding: 1rem;
     width: fit-content;
-    border-radius: 6px;
+    color: white;
+    border-radius:6px;
 }
+    .TotalInvestiment p{
+        margin:0;
+        margin-top:1rem;
+    }
+    /*/////////////////////////////////////////////////////////////////////////////////////////////*
+/*SendFile*/
+    .envio-arquivos {
+        background-color: white;
+        padding: 1rem;
+        width: fit-content;
+        border-radius: 6px;
+    }
 
     .envio-arquivos form {
         display: flex;

@@ -1,0 +1,126 @@
+﻿@model List<CustomerModel>
+@{
+	double total = 0;
+	foreach (var item in Model)
+	{
+		total += item.ValorMensal;
+	}
+}
+
+
+<div class="main">
+	@await Component.InvokeAsync("Header")
+	
+	<section id="table_row">
+		<div class="card">
+			<div class="card_header">
+				<div class="table_float">@Model[0].Cliente</div>
+			</div>
+			<div class="card_body">
+				<table id="myTable" class="myTable">
+					<thead>
+						<tr>
+							<th class="thead_id">
+								Id Sens.
+							</th>
+							<th>
+								Id Starford
+							</th>
+							<th>
+								CNPJ/CPF <br>
+								Razão Social
+							</th>
+							<th>
+								Status
+							</th>
+							<th>
+								Loja
+							</th>
+							<th>
+								Cliente
+							</th>
+							<th>
+								Produto Fiscal
+							</th>
+							<th>
+								FR
+							</th>
+							<th>
+								Valor
+							</th>
+
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									<p class="thead_id">@item.IdSense</p>
+								</td>
+								<td>
+
+									<p class="thead_id">@item.IdStarford</p>
+
+								</td>
+								<td>
+									<div class="razao">
+										<p>
+											@item.RazaoSocial
+										</p>
+										<p>
+											@item.Cnpj
+										</p>
+									</div>
+								</td>
+								<td class="td_status">
+
+									@if (item.Status == true)
+									{
+										<p class="status">
+											Ativos
+										</p>
+									}
+									else
+									{
+										<p class="status status_inactive">
+											Inativos
+										</p>
+									}
+								</td>
+								<td>
+									<p>@item.Loja</p>
+								</td>
+								<td>
+									<p>@item.Cliente</p>
+								</td>
+								<td>
+									<p>@item.ProdutoFiscal</p>
+								</td>
+								<td>
+									<p>@item.Fr</p>
+								</td>
+								<td>
+									<p>@item.ValorMensal.ToString("F2")</p>
+								</td>
+							</tr>
+
+						}
+
+					</tbody>
+					
+				</table>
+				<div class="TotalInvestiment">
+					<H4>Valor Total</H4>
+					<p>R$ @total.ToString("F2")</p>
+				</div>
+				
+
+			</div>
+		</div>
+	</section>
+</div>
+<footer class="footer">
+	<p> &copy; <a href="#">U.Code</a> development</p>
+	<p class="footer_link">Visite nosso site <a href="#">U.code</a> </p>
+</footer>

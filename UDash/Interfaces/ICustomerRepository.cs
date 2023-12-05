@@ -11,6 +11,9 @@ namespace UDash.Interfaces
 		bool Editar(CustomerViewModel customer);
 		bool Deletar(CustomerModel customer);
 		List<CustomerModel> AdicionarTodos(List<CustomerModel> customers);
+		List<CustomerModel> BuscarContasIdStarlord(Guid id);
+
+
 
 	}
 }

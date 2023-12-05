@@ -28,6 +28,10 @@ namespace UDash.Repository
 		{
 			return _context.Customers.Where(x => x.UserId == id).ToList();
 		}
+		public List<CustomerModel> ListarTodos()
+		{
+			return _context.Customers.ToList();
+		}
 
 		public bool Create(CustomerModel customer)
 		{
@@ -109,6 +113,14 @@ namespace UDash.Repository
 		{
 			_context.AddRange(customers);
 			_context.SaveChanges();
+			return customers;
+		}
+
+		public List<CustomerModel> BuscarContasIdStarlord(Guid id)
+		{
+			CustomerModel customerDB = BuscarPorId(id);
+			string idStarlord = customerDB.IdStarford;
+			List<CustomerModel> customers = ListarTodos().Where(x => x.IdStarford == idStarlord).ToList();
 			return customers;
 		}
 	}

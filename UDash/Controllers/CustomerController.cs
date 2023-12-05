@@ -33,6 +33,13 @@ namespace UDash.Controllers
 			CustomerModel customerDb = _customer.BuscarPorId(id);
 			return View(customerDb);
 		}
+		
+		public IActionResult TodasAsContas(Guid id)
+		{
+			List<CustomerModel> customers = _customer.BuscarContasIdStarlord(id);
+			return View(customers);
+		}
+
 
 		[HttpPost]
 		public IActionResult Edit(CustomerViewModel customer)

@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 
 html, body {
     height: 100vh;
+    font-size:16px;
 }
 
 body {
@@ -746,7 +747,7 @@ img {
 }
 
 .dataTables_length label {
-    display: none;
+    display: block;
 }
 
 .card_header {
@@ -765,6 +766,7 @@ img {
 
 .card_body {
     display: flex;
+    flex-direction:column;
     justify-content: center;
     padding: 0 2rem 2rem 2rem;
     background-color: rgb(255, 255, 255);
@@ -774,13 +776,14 @@ img {
 }
 
     .card_body table {
-        width: 98%;
+        width: 100%;
         text-align: center;
         border-collapse: collapse;
         color: rgb(123, 128, 154);
     }
 
     .card_body th {
+        min-width:80px;
         font-size: .8rem;
     }
 
@@ -839,7 +842,7 @@ img {
 }
 
 .card_body a {
-    color: rgb(123, 128, 154);
+    color: #1a73e8;
     font-weight: bold;
 }
 
@@ -879,7 +882,9 @@ table.myTable {
 .table_actions {
     font-size: .8rem
 }
-
+.tbody, .tbody tr th{
+    text-align: center;
+}
 
 
 /*Customer*/
@@ -1040,6 +1045,19 @@ table.myTable {
 .bgImageLink {
     background-image: linear-gradient(195deg,#ec407a,#d81b60)
 }
+.TotalInvestiment {
+    margin: 0;
+    background-color: #1f2847;
+    padding: 1rem;
+    width: fit-content;
+    color: white;
+    border-radius:6px;
+}
+    .TotalInvestiment p{
+        margin:0;
+        margin-top:1rem;
+    }
+
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////*
 /*SendFile*/
