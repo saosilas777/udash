@@ -2,39 +2,45 @@
 using UDash.Models;
 using System.Collections.Generic;
 using UDash.Models.ViewModels;
+using UDash.Repository;
+using UDash.Interfaces;
 
 namespace UDash.Services
 {
 	public class AnalyticsServices
 	{
+		private readonly ICustomerRepository _customerRepository;
+		private readonly SectionService _sectionService;
+
+		public AnalyticsServices(ICustomerRepository customerRepository, SectionService sectionService)
+		{
+			_customerRepository = customerRepository;
+			_sectionService = sectionService;
+		}
+
 		public AnalyticsModel AnalyticsCreate()
 		{
+			var user = _sectionService.Section();
+
+			List<CustomerModel> customers = _customerRepository.BuscarTodos(user.Id);
+
+			double totalPortfolio = 0;		
+
+			for (int i = 0; i < customers.Count(); i++)
+			{
+				totalPortfolio += customers[i].ValorMensal;
+			}
+
 			AnalyticsModel model = new AnalyticsModel();
 			model = new AnalyticsModel
 			{
-				TotalCustomer = 320,
-				AverageTicket = 5200,
-				TotalPortfolio = 98552.00,
-				Churns = 2
+				TotalCustomer = customers.Count(),
+				AverageTicket = totalPortfolio / customers.Count(),
+				TotalPortfolio = totalPortfolio,
+				Churns = 2,
+				Registration = DateTime.Now
+				
 			};
-			/*model.NoShows = new NoShowsMonth
-			{
-				Segunda = "1",
-				Terca = "2",
-				Quarta = "3",
-				Quinta = "4",
-				Sexta = "5"
-
-			};
-			model.Meetings = new MeetingsMonths
-			{
-				Segunda = "1",
-				Terca = "2",
-				Quarta = "3",
-				Quinta = "4",
-				Sexta = "5"
-
-			};*/
 			return model;
 		}
 		/*TODO*/

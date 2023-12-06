@@ -25,15 +25,14 @@ namespace UDash.Controllers
 		{
 
 			var user = _sectionService.Section();
-			var analyticsCreate = _analyticsServices.AnalyticsCreate();
+			/*var analyticsCreate = _analyticsServices.AnalyticsCreate();
 			analyticsCreate.UserId = user.Id;
 			_analyticsRepository.InsertAnalytics(analyticsCreate);
-
+*/
 			var analytics = _analyticsRepository.BuscarTodos();
 			if (user != null)
 			{
-				/*var analytics = _analyticsRepository.BuscarTodos();*/
-				/*analytics.User = user;*/
+				
 				return View(analytics);
 			};
 			return RedirectToAction("Login", "Login");
@@ -45,10 +44,9 @@ namespace UDash.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult ReceberDados(AnalyticsViewModel analytics)
+		public IActionResult ReceberDatos(AnalyticsViewModel analytics)
 		{
-			_analyticsRepository.InsertMeetings(analytics);
-			_analyticsRepository.InsertNoShows(analytics);
+			_analyticsRepository.InsertAnalytics(analytics);
 			return RedirectToAction("Index", "Analytics");
 		}
 

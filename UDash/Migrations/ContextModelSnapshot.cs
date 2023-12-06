@@ -34,6 +34,9 @@ namespace UDash.Migrations
                     b.Property<int>("Churns")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Registration")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("TotalCustomer")
                         .HasColumnType("int");
 

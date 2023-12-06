@@ -59,4 +59,11 @@ if (url.includes('ChangePassword')) {
 }
 
 
+const insertDataBtn = document.getElementById('insertDataBtn')
+const insert = document.getElementById('insert')
+
+insertDataBtn.addEventListener('click', function () {
+    insert.style.display = "block";
+})
+
 

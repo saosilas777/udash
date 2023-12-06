@@ -1,6 +1,12 @@
 ﻿@model UDash.Models.ViewModels.AnalyticsViewModel
 
+@{
+	double _totalPortfolio = @Model.TotalPortfolio;
+	double _averageTicket = @Model.AverageTicket;
 
+	string totalPortfolio = _totalPortfolio.ToString("C2", new System.Globalization.CultureInfo("pt-BR"));
+	string averageTicket = _averageTicket.ToString("C2", new System.Globalization.CultureInfo("pt-BR"));
+}
 
 <div class="main">
 	@await Component.InvokeAsync("Header")
@@ -13,8 +19,8 @@
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
 
-				<p class="margin_right">R$</p>
-				<p id="TotalPortfolio">@Model.Analytics.TotalPortfolio.ToString("F2")</p>
+				<p class="margin_right"></p>
+				<p id="TotalPortfolio">@totalPortfolio</p>
 			</div>
 		</div>
 		<div class="tickets people">
@@ -24,7 +30,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.Analytics.TotalCustomer</p>
+				<p>@Model.TotalCustomer</p>
 			</div>
 		</div>
 		<div class="tickets arrow">
@@ -34,7 +40,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.Analytics.AverageTicket</p>
+				<p>@averageTicket</p>
 			</div>
 		</div>
 		<div class="tickets handshake">
@@ -44,65 +50,101 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.Analytics.Churns</p>
+				<p>@Model.Churns</p>
 			</div>
 		</div>
 
 	</section>
 
 	<!-- Graphics -->
-	<div>
-		<button>Inserir</button>
 
-		<form style="display:flex;gap:2rem;" asp-action="ReceberDados" asp-controller="Analytics" method="post">
-			<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:500px;color:white">
-				Reuniões da semana
-				<label>
-					Segunda:
-					<input class="meeting" asp-for="@Model.Meetings.Segunda" />
-				</label>
-				<label>
-					Terça:
-					<input class="meeting" asp-for="@Model.Meetings.Terca" />
-				</label>
-				<label>
-					Quarta:
-					<input class="meeting" asp-for="@Model.Meetings.Quarta" />
-				</label>
-				<label>
-					Quinta:
-					<input class="meeting" asp-for="@Model.Meetings.Quinta" />
-				</label>
-				<label>
-					Sexta:
-					<input class="meeting" asp-for="@Model.Meetings.Sexta" />
-				</label>
+	<button class="insertDataBtn" id="insertDataBtn" type="button">Inserir dados</button>
+	<div id="insert">
+		<form asp-action="ReceberDatos" asp-controller="Analytics" method="post">
+			<div class="insertContent">
+				<h4>Reuniões da semana</h4>
+				<div class="divFlexRow">
+					<div class="divFlexColumn">
+						<label>
+							Segunda:
+						
+						</label>
+						<label>
+							Terça:
+						
+						</label>
+						<label>
+							Quarta:
+						
+						</label>
+						<label>
+							Quinta:
+						
+						</label>
+						<label>
+							Sexta:
+						
+						</label>
+					</div>
+					<div class="spaceBetween"></div>
+					<div class="divFlexColumn">
+						<input class="meeting" value="@Model.Meetings.Segunda" asp-for="@Model.Meetings.Segunda" />
+						<input class="meeting" value="@Model.Meetings.Terca" asp-for="@Model.Meetings.Terca" />
+						<input class="meeting" value="@Model.Meetings.Quarta" asp-for="@Model.Meetings.Quarta" />
+						<input class="meeting" value="@Model.Meetings.Quinta" asp-for="@Model.Meetings.Quinta" />
+						<input class="meeting" value="@Model.Meetings.Sexta" asp-for="@Model.Meetings.Sexta" />
+					</div>
+				</div>
 			</div>
-			<div style="display:flex;flex-direction:column;max-width:500px;color:white">
-				No Shows da semana
-				<label>
-					Segunda:
-					<input class="noshows" asp-for="@Model.NoShows.Segunda" />
-				</label>
-				<label>
-					Terça:
-					<input class="noshows" asp-for="@Model.NoShows.Terca" />
-				</label>
-				<label>
-					Quarta:
-					<input class="noshows" asp-for="@Model.NoShows.Quarta" />
-				</label>
-				<label>
-					Quinta:
-					<input class="noshows" asp-for="@Model.NoShows.Quinta" />
-				</label>
-				<label>
-					Sexta:
-					<input class="noshows" asp-for="@Model.NoShows.Sexta" />
-				</label>
+			<div class="insertContent">
+				<h4>No Shows da semana</h4>
+				<div class="divFlexRow">
+					<div class="divFlexColumn">
+						<label>
+							Segunda:
+						</label>
+						<label>
+							Terça:
+						</label>
+						<label>
+							Quarta:
+						</label>
+						<label>
+							Quinta:
+						</label>
+						<label>
+							Sexta:
+						</label>
+					</div>
+					<div class="spaceBetween"></div>
+					<div class="divFlexColumn">
+						<input class="noshows" value="@Model.NoShows.Segunda" asp-for="@Model.NoShows.Segunda" />
+						<input class="noshows" value="@Model.NoShows.Terca" asp-for="@Model.NoShows.Terca" />
+						<input class="noshows" value="@Model.NoShows.Quarta" asp-for="@Model.NoShows.Quarta" />
+						<input class="noshows" value="@Model.NoShows.Quinta" asp-for="@Model.NoShows.Quinta" />
+						<input class="noshows" value="@Model.NoShows.Sexta" asp-for="@Model.NoShows.Sexta" />
+					</div>
+				</div>
+			</div>
+			<div class="insertContent churns">
+				<h4>Churns da semana</h4>
 
+				<div class="divFlexRow ">
+					<div class="divFlexColumn">
+						<label>
+							Churns:
+						</label>
+					</div>
+					<div class="spaceBetween"></div>
+					<div class="divFlexColumn">
+						<input type="text" class="churns" value="@Model.Churns" asp-for="@Model.Churns" />
+					</div>
+				</div>
 			</div>
-			<button type="submit">Enviar</button>
+			<div class="insertContent" style="background-image:none">
+				<button class="enviarDataBtn" type="submit">Enviar</button>
+			</div>
+
 
 		</form>
 	</div>
