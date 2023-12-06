@@ -34,12 +34,6 @@ namespace UDash.Migrations
                     b.Property<int>("Churns")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("MeetingId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("NoShowsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("TotalCustomer")
                         .HasColumnType("int");
 
@@ -51,16 +45,12 @@ namespace UDash.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MeetingId");
-
-                    b.HasIndex("NoShowsId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Analytics");
                 });
 
-            modelBuilder.Entity("UDash.Models.Customer", b =>
+            modelBuilder.Entity("UDash.Models.CustomerModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,7 +132,26 @@ namespace UDash.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Meeting")
+                    b.Property<string>("Quarta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quinta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Registration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Segunda")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sexta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Terca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -160,7 +169,26 @@ namespace UDash.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("NoShows")
+                    b.Property<string>("Quarta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Quinta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Registration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Segunda")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sexta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Terca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -203,27 +231,11 @@ namespace UDash.Migrations
 
             modelBuilder.Entity("UDash.Models.AnalyticsModel", b =>
                 {
-                    b.HasOne("UDash.Models.MeetingsMonths", "Meeting")
-                        .WithMany()
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UDash.Models.NoShowsMonth", "NoShows")
-                        .WithMany()
-                        .HasForeignKey("NoShowsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UDash.Models.UserModel", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Meeting");
-
-                    b.Navigation("NoShows");
 
                     b.Navigation("User");
                 });

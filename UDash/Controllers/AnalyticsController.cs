@@ -3,6 +3,7 @@ using System.Diagnostics;
 using UDash.Interfaces;
 using UDash.Models;
 using UDash.Models.ViewModels;
+using UDash.Repository;
 using UDash.Services;
 
 namespace UDash.Controllers
@@ -11,21 +12,28 @@ namespace UDash.Controllers
 	{
 		private readonly SectionService _sectionService;
 		private readonly AnalyticsServices _analyticsServices;
+		private readonly AnalyticsRepository _analyticsRepository;
 
-		public AnalyticsController(SectionService sectionService, AnalyticsServices analytics)
+		public AnalyticsController(SectionService sectionService, AnalyticsServices analytics, AnalyticsRepository analyticsRepository)
 		{			
 			_sectionService = sectionService;			
 			_analyticsServices = analytics;
+			_analyticsRepository = analyticsRepository;
 		}
 
 		public IActionResult Index()
 		{
 
 			var user = _sectionService.Section();
+			var analyticsCreate = _analyticsServices.AnalyticsCreate();
+			analyticsCreate.UserId = user.Id;
+			_analyticsRepository.InsertAnalytics(analyticsCreate);
+
+			var analytics = _analyticsRepository.BuscarTodos();
 			if (user != null)
 			{
-				var analytics = _analyticsServices.AnalyticsCreate();
-				analytics.User = user;
+				/*var analytics = _analyticsRepository.BuscarTodos();*/
+				/*analytics.User = user;*/
 				return View(analytics);
 			};
 			return RedirectToAction("Login", "Login");
@@ -35,6 +43,16 @@ namespace UDash.Controllers
 		{
 			return View();
 		}
+
+		[HttpPost]
+		public IActionResult ReceberDados(AnalyticsViewModel analytics)
+		{
+			_analyticsRepository.InsertMeetings(analytics);
+			_analyticsRepository.InsertNoShows(analytics);
+			return RedirectToAction("Index", "Analytics");
+		}
+
+
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

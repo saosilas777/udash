@@ -1,13 +1,8 @@
-﻿@model AnalyticsModel
+﻿@model UDash.Models.ViewModels.AnalyticsViewModel
 
-@if(Model == null){
-	<div class="main">
-	<div>Loading</div>
-	</div>
-}
-@if (Model != null)
-{
-	<div class="main">
+
+
+<div class="main">
 	@await Component.InvokeAsync("Header")
 	<section class="content-cards display analytics">
 		<div class="tickets dollar">
@@ -17,9 +12,9 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				
+
 				<p class="margin_right">R$</p>
-				<p id="TotalPortfolio">@Model.TotalPortfolio.ToString("F2")</p>
+				<p id="TotalPortfolio">@Model.Analytics.TotalPortfolio.ToString("F2")</p>
 			</div>
 		</div>
 		<div class="tickets people">
@@ -29,7 +24,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.TotalCustomer</p>
+				<p>@Model.Analytics.TotalCustomer</p>
 			</div>
 		</div>
 		<div class="tickets arrow">
@@ -39,7 +34,7 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.AverageTicket</p>
+				<p>@Model.Analytics.AverageTicket</p>
 			</div>
 		</div>
 		<div class="tickets handshake">
@@ -49,20 +44,75 @@
 			</div>
 			<span class="horizontal-line"></span>
 			<div class="ticket_content">
-				<p>@Model.Churns</p>
+				<p>@Model.Analytics.Churns</p>
 			</div>
 		</div>
 
 	</section>
 
 	<!-- Graphics -->
+	<div>
+		<button>Inserir</button>
+
+		<form style="display:flex;gap:2rem;" asp-action="ReceberDados" asp-controller="Analytics" method="post">
+			<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:500px;color:white">
+				Reuniões da semana
+				<label>
+					Segunda:
+					<input class="meeting" asp-for="@Model.Meetings.Segunda" />
+				</label>
+				<label>
+					Terça:
+					<input class="meeting" asp-for="@Model.Meetings.Terca" />
+				</label>
+				<label>
+					Quarta:
+					<input class="meeting" asp-for="@Model.Meetings.Quarta" />
+				</label>
+				<label>
+					Quinta:
+					<input class="meeting" asp-for="@Model.Meetings.Quinta" />
+				</label>
+				<label>
+					Sexta:
+					<input class="meeting" asp-for="@Model.Meetings.Sexta" />
+				</label>
+			</div>
+			<div style="display:flex;flex-direction:column;max-width:500px;color:white">
+				No Shows da semana
+				<label>
+					Segunda:
+					<input class="noshows" asp-for="@Model.NoShows.Segunda" />
+				</label>
+				<label>
+					Terça:
+					<input class="noshows" asp-for="@Model.NoShows.Terca" />
+				</label>
+				<label>
+					Quarta:
+					<input class="noshows" asp-for="@Model.NoShows.Quarta" />
+				</label>
+				<label>
+					Quinta:
+					<input class="noshows" asp-for="@Model.NoShows.Quinta" />
+				</label>
+				<label>
+					Sexta:
+					<input class="noshows" asp-for="@Model.NoShows.Sexta" />
+				</label>
+
+			</div>
+			<button type="submit">Enviar</button>
+
+		</form>
+	</div>
 	<section class="content_graphics-cards">
 		<article class="tickets">
 			<div class="content_graphics-content">
 				<p>Reuniões da semana</p>
 			</div>
 			<div class="content_graphics-graphics">
-				<input hidden id="meetings" value="@Model.Meeting.Meeting"/>				
+				<input hidden id="meetings" value="1,2,3,4,5,10" />
 				<canvas id="myChart"></canvas>
 			</div>
 		</article>
@@ -71,30 +121,30 @@
 				<p>No Shows da semana</p>
 			</div>
 			<div class="content_graphics-graphics">
-				<input hidden id="noShows" value="@Model.NoShows.NoShows" />
+				<input hidden id="noShows" value="@*@Model.NoShows*@" />
 				<canvas id="myChart2"></canvas>
 			</div>
 		</article>
-			<article class="tickets">
-				<div class="content_graphics-content">
-					<p>Reuniões mês</p>
-				</div>
-				<div class="content_graphics-graphics">
-					<canvas id="myChart3"></canvas>
-				</div>
-			</article>
-			<article class="tickets">
-				<div class="content_graphics-content">
-					<p>No Shows mês</p>
-				</div>
-				<div class="content_graphics-graphics">
-					<canvas id="myChart4"></canvas>
-				</div>
-			</article>
+		<article class="tickets">
+			<div class="content_graphics-content">
+				<p>Reuniões mês</p>
+			</div>
+			<div class="content_graphics-graphics">
+				<canvas id="myChart3"></canvas>
+			</div>
+		</article>
+		<article class="tickets">
+			<div class="content_graphics-content">
+				<p>No Shows mês</p>
+			</div>
+			<div class="content_graphics-graphics">
+				<canvas id="myChart4"></canvas>
+			</div>
+		</article>
 
 	</section>
-	
-	
+
+
 </div>
 <footer class="footer">
 	<p> &copy; <a href="#">U.Code</a> development</p>
@@ -102,5 +152,5 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/chart.js"></script>
-}
+
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using UDash.Models;
 using System.Collections.Generic;
+using UDash.Models.ViewModels;
 
 namespace UDash.Services
 {
@@ -9,28 +10,31 @@ namespace UDash.Services
 		public AnalyticsModel AnalyticsCreate()
 		{
 			AnalyticsModel model = new AnalyticsModel();
-			model.TotalPortfolio = 98150.50;
-			model.TotalCustomer = 151;
-			model.Churns = 5;
-			model.AverageTicket = 2500.55;
-
-			MeetingsMonths meets = new MeetingsMonths
+			model = new AnalyticsModel
 			{
-				Id = Guid.NewGuid(),
-				UserId = Guid.NewGuid(),
-				Meeting = "20,8,10,15,3"
+				TotalCustomer = 320,
+				AverageTicket = 5200,
+				TotalPortfolio = 98552.00,
+				Churns = 2
+			};
+			/*model.NoShows = new NoShowsMonth
+			{
+				Segunda = "1",
+				Terca = "2",
+				Quarta = "3",
+				Quinta = "4",
+				Sexta = "5"
 
 			};
-			NoShowsMonth noShows = new NoShowsMonth
+			model.Meetings = new MeetingsMonths
 			{
-				Id = Guid.NewGuid(),
-				UserId = Guid.NewGuid(),
-				NoShows = "10,5,8,3,4"
+				Segunda = "1",
+				Terca = "2",
+				Quarta = "3",
+				Quinta = "4",
+				Sexta = "5"
 
-			};
-
-			model.Meeting = meets;
-			model.NoShows = noShows;
+			};*/
 			return model;
 		}
 		/*TODO*/

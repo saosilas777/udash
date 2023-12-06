@@ -43,7 +43,6 @@ const analytics = document.getElementById('Analytics')
 const home = document.getElementById('Home')
 const keyBtn = document.getElementById('keyBtn')
 
-
 const url = window.location.pathname
 
 if (url.includes('Home')) {

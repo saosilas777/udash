@@ -9,8 +9,8 @@ namespace UDash.Repository
 {
 	public class CustomerRepository : ICustomerRepository
 	{
-		private readonly Context _context;
 		private readonly ISection _section;
+		private readonly Context _context;
 		public CustomerRepository(Context context,
 								ISection section)
 		{
