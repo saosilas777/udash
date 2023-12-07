@@ -1,13 +1,26 @@
 ﻿const ctx1 = document.getElementById('myChart');
 let backgroundColor = ""
 
-const _data = document.getElementById('meetings').value.split(',')
-const _data2 = document.getElementById('noShows').value.split(',')
+let _data = [];
+let _data2 = [];
+const inputsMeeting = document.querySelectorAll('.meeting')
+const inputsNoshows = document.querySelectorAll('.noshows')
 
-/*for (let i = 0; i < 6; i++) {
-    _data2[i] = _data[i]*30
-        
-}*/
+let totalMeeting = 0
+let totalNoshows = 0
+inputsMeeting.forEach(function (item) {
+    _data.push(parseInt(item.value))
+    totalMeeting += parseInt(item.value)
+
+})
+inputsNoshows.forEach(function (item) {
+    _data2.push(parseInt(item.value))
+    totalNoshows += parseInt(item.value)
+
+})
+
+_data.push(totalMeeting)
+_data2.push(totalNoshows)
 
 new Chart(ctx1, {
 
@@ -182,6 +195,7 @@ new Chart(ctx2, {
 });
 
 const ctx3 = document.getElementById('myChart3');
+const _data12 = [5, 7, 15, 8, 9, 10, 16, 15, 18, 5, 8, 19]
 new Chart(ctx3, {
     type: "bar",
     data: {
@@ -189,12 +203,12 @@ new Chart(ctx3, {
         datasets: [{
             label: "Sales",
             borderWidth: 0,
-            data: [5, 7, 15, 8, 9, 10, 16, 15, 18, 5, 8, 19],
+            data: _data12,
             backgroundColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] > 10) {
+                for (let i = 0; i < _data12.length; i++) {
+                    if (_data12[i] > 10) {
 
                         colors[i] = "rgba(227, 52, 102,1)"
                     }
@@ -207,8 +221,8 @@ new Chart(ctx3, {
             borderColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] > 10) {
+                for (let i = 0; i < _data12.length; i++) {
+                    if (_data12[i] > 10) {
 
                         colors[i] = "rgba(227, 52, 102,1)"
                     }
@@ -273,12 +287,12 @@ new Chart(ctx4, {
         datasets: [{
             label: "Sales",
             borderWidth: 0,
-            data: [5, 7, 15, 8, 9, 10, 16, 15, 18, 5, 8, 19],
+            data: _data12,
             backgroundColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] > 10) {
+                for (let i = 0; i < _data12.length; i++) {
+                    if (_data12[i] > 10) {
 
                         colors[i] = "rgba(227, 52, 102,1)"
                     }
@@ -291,8 +305,8 @@ new Chart(ctx4, {
             borderColor: color => {
                 // console.log(color)
                 let colors = []
-                for (let i = 0; i < _data.length; i++) {
-                    if (_data[i] > 10) {
+                for (let i = 0; i < _data12.length; i++) {
+                    if (_data12[i] > 10) {
 
                         colors[i] = "rgba(227, 52, 102,1)"
                     }

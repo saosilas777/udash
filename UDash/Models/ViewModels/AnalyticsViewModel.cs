@@ -9,6 +9,6 @@
 		public double AverageTicket { get; set; }
 		public int Churns { get; set; }
 		public MeetingsMonths Meetings { get; set; }
-		public NoShowsMonth NoShows { get; set; } 
+		public NoShowsMonth NoShows { get; set; }
 	}
 }
