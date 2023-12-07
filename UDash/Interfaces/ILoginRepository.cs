@@ -9,6 +9,8 @@ namespace UDash.Interfaces
 
 		LoginModel BuscarPorLogin(string login);
 		bool BuscarPorEmail(string email);
+		LoginModel BuscarPorId(Guid id);
+		void ChangePassword(LoginModel login);
 
 	}
 }

@@ -88,13 +88,14 @@ Z:\Udash\UDash\UDash\obj\Debug\net6.0\refint\UDash.dll
 Z:\Udash\UDash\UDash\obj\Debug\net6.0\UDash.pdb
 Z:\Udash\UDash\UDash\obj\Debug\net6.0\UDash.genruntimeconfig.cache
 Z:\Udash\UDash\UDash\obj\Debug\net6.0\ref\UDash.dll
-Z:\udash\UDash\bin\Debug\net6.0\UDash.dll
 Z:\udash\UDash\bin\Debug\net6.0\appsettings.Development.json
 Z:\udash\UDash\bin\Debug\net6.0\appsettings.json
 Z:\udash\UDash\bin\Debug\net6.0\UDash.staticwebassets.runtime.json
 Z:\udash\UDash\bin\Debug\net6.0\UDash.exe
 Z:\udash\UDash\bin\Debug\net6.0\UDash.deps.json
 Z:\udash\UDash\bin\Debug\net6.0\UDash.runtimeconfig.json
+Z:\udash\UDash\bin\Debug\net6.0\UDash.dll
+Z:\udash\UDash\bin\Debug\net6.0\UDash.pdb
 Z:\udash\UDash\bin\Debug\net6.0\Azure.Core.dll
 Z:\udash\UDash\bin\Debug\net6.0\Azure.Identity.dll
 Z:\udash\UDash\bin\Debug\net6.0\EPPlus.dll
@@ -176,5 +177,4 @@ Z:\udash\UDash\obj\Debug\net6.0\UDash.dll
 Z:\udash\UDash\obj\Debug\net6.0\refint\UDash.dll
 Z:\udash\UDash\obj\Debug\net6.0\UDash.pdb
 Z:\udash\UDash\obj\Debug\net6.0\UDash.genruntimeconfig.cache
-Z:\udash\UDash\bin\Debug\net6.0\UDash.pdb
 Z:\udash\UDash\obj\Debug\net6.0\ref\UDash.dll

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UDash.Interfaces;
+using UDash.Models;
 using UDash.Services;
 
 namespace UDash.Controllers
@@ -14,16 +15,7 @@ namespace UDash.Controllers
 		}
 		public IActionResult Index()
 		{
-			try
-			{
-				var user = _sectionService.Section();
-				return View(user);
-			}
-			catch (Exception e)
-			{
-
-				throw new Exception(e.Message);
-			}
+				return View();			
 			
 		}
 	}

@@ -52,6 +52,15 @@ namespace UDash.Repository
 			return true;
 		}
 
-
+		public LoginModel BuscarPorId(Guid id)
+		{
+			LoginModel? login  = _context.Login.FirstOrDefault(x => x.UserId == id);
+			return login;
+		}
+		public void ChangePassword(LoginModel login)
+		{
+			_context.Update(login);
+			_context.SaveChanges();
+		}
 	}
 }

@@ -79,9 +79,6 @@ namespace UDash.Controllers
 				return View("SignUp");
 			}
 
-
-			/*}
-			return RedirectToAction("SignUp", "User");*/
 		}
 
 		[HttpPost]
@@ -97,6 +94,7 @@ namespace UDash.Controllers
 					{
 						var authenticated = TokenService.Authenticate(loginDb.User);
 						_sectionService.CreateSection(authenticated);
+						UserModel user = TokenService.GetDataInToken(authenticated);
 						if(authenticated != null)
 						{
 							return RedirectToAction("Index", "Home");

@@ -23,35 +23,8 @@ namespace UDash.Controllers
 
 		public IActionResult Index()
 		{
-			/*var analyticsCreate = _analyticsServices.AnalyticsCreate();
-			analyticsCreate.UserId = user.Id;
-			_analyticsRepository.InsertAnalytics(analyticsCreate);*/
-
-			var user = _sectionService.Section();
-
-			
-			if (user != null )
-			{
-				var analytics = _analyticsRepository.BuscarTodos();
-				if (analytics == null)
-				{
-					AnalyticsViewModel analyticsView = new AnalyticsViewModel();
-
-					NoShowsMonth noshows = new NoShowsMonth();
-
-					MeetingsMonths meets = new MeetingsMonths();
-
-					analyticsView.Churns = 0;
-
-					analyticsView.Meetings = meets;
-					analyticsView.NoShows = noshows;
-					return View(analyticsView);
-
-				}
-				return View(analytics);
-			}
-			
-			return RedirectToAction("Login", "Login");
+			var analytics = _analyticsRepository.BuscarTodos();
+			return View(analytics);
 		}
 
 		public IActionResult Privacy()

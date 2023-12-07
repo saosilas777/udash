@@ -1161,16 +1161,29 @@ table.myTable {
 
 /*ChangePWD*/
 .form_container {
+    position:relative;
     width: 100%;
     margin-top: 1rem;
     height: calc(100vh - 8.5rem);
     background-color: transparent;
     padding: 1rem;
     display: flex;
+    flex-direction:column;
     justify-content: center;
     align-items: center;
 }
-
+#alert {
+    position:absolute;
+    top:1rem;
+    background-color: #1a73e8;
+    padding: 1rem;
+    color: white;
+    border-radius: 6px;
+    width: 60%;
+    margin-top: 1rem;
+    text-align: center;
+    transition:all .5s ease-in-out;
+}
 .form_container-row {
     display: flex;
     justify-content: center;
@@ -1180,7 +1193,8 @@ table.myTable {
 }
 
 .form_container form {
-    width: 35%;
+    width: 40%;
+    min-width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1253,3 +1267,4 @@ table.myTable {
     background-color: #ec407a;
     color: white;
 }
+
