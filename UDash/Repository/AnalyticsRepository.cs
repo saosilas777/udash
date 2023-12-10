@@ -10,17 +10,17 @@ namespace UDash.Repository
 {
 	public class AnalyticsRepository
 	{
-		private readonly SectionService _sectionService;
+		private readonly ISection _section;
 		private readonly ICustomerRepository _customerRepository;
 
 		private readonly Context _context;
 		public AnalyticsRepository(Context context,
-								SectionService section,
+								ISection section,
 								ICustomerRepository customerRepository
 								)
 		{
 			_context = context;
-			_sectionService = section;
+			_section = section;
 			_customerRepository = customerRepository;
 
 		}
@@ -29,7 +29,8 @@ namespace UDash.Repository
 		{
 			try
 			{
-				var user = _sectionService.Section();
+				var token = _section.GetUserSection();
+				var user = TokenService.GetDataInToken(token);
 
 				List<CustomerModel> customers = _customerRepository.BuscarTodos(user.Id);
 
@@ -94,7 +95,9 @@ namespace UDash.Repository
 
 		public void InsertAnalytics(AnalyticsViewModel analytics)
 		{
-			var user = _sectionService.Section();
+			var token = _section.GetUserSection();
+			var user = TokenService.GetDataInToken(token);
+
 			analytics.NoShows.UserId = user.Id;
 			analytics.NoShows.Registration = DateTime.Now;
 			_context.NoShows.Add(analytics.NoShows);

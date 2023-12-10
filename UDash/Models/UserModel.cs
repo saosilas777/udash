@@ -13,6 +13,5 @@ namespace UDash.Models
 		public DateTime ResgiterData { get; set; }
 		public DateTime LastUpdate { get; set; }
 
-
 	}
 }

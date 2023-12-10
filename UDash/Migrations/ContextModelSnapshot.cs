@@ -203,6 +203,24 @@ namespace UDash.Migrations
                     b.ToTable("NoShows");
                 });
 
+            modelBuilder.Entity("UDash.Models.SendFileImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImageUrl");
+                });
+
             modelBuilder.Entity("UDash.Models.UserModel", b =>
                 {
                     b.Property<Guid>("Id")

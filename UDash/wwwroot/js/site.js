@@ -72,4 +72,3 @@ insertDataBtn.addEventListener('click', function () {
     insert.style.display = "block";
 })
 
-

@@ -10,21 +10,24 @@ namespace UDash.Controllers
 {
 	public class CustomerController : Controller
 	{
+		#region Dependencies
 		private readonly ICustomerRepository _customer;
-		private readonly SectionService _sectionService;
+		private readonly ISection _section;
 		public CustomerController(ICustomerRepository customer,
-									SectionService sectionService
+									ISection section
 									)
 		{
-			_customer = customer;
-			_sectionService = sectionService;
-			
+			_customer = customer; _section = section;
+
 		}
+		#endregion
+
+
 		public IActionResult Index()
 		{
-			var user = _sectionService.Section();
+			var token = _section.GetUserSection();
+			var user = TokenService.GetDataInToken(token);
 			List<CustomerModel> customers = _customer.BuscarTodos(user.Id);
-			/*List<Customer> customers = _customer.CreateAt();*/
 			return View(customers);
 		}
 

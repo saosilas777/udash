@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "J9TQ/v3YRT/Gm7+yQE3GJRZxJCPyubqSiZUjVvcHSV8=",
+  "Hash": "Oc8yKl0US9S1PKYv0kWpwuYJx0WzE5GMyXafKDNgByE=",
   "Source": "UDash",
   "BasePath": "_content/UDash",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\chart.js"
+    },
+    {
+      "Identity": "Z:\\udash\\UDash\\wwwroot\\js\\ConvertImageBase64.js",
+      "SourceId": "UDash",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\udash\\UDash\\wwwroot\\",
+      "BasePath": "_content/UDash",
+      "RelativePath": "js/ConvertImageBase64.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ConvertImageBase64.js"
     },
     {
       "Identity": "Z:\\udash\\UDash\\wwwroot\\js\\customer.js",
@@ -916,6 +933,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "Z:\\udash\\UDash\\wwwroot\\lib\\Images\\Avatar.png",
+      "SourceId": "UDash",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\udash\\UDash\\wwwroot\\",
+      "BasePath": "_content/UDash",
+      "RelativePath": "lib/Images/Avatar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\Images\\Avatar.png"
     },
     {
       "Identity": "Z:\\udash\\UDash\\wwwroot\\lib\\Images\\background.png",

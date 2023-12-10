@@ -26,9 +26,9 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ISendEmail, SendEmail>();
+builder.Services.AddScoped<SendFileImageRepository, SendFileImageRepository>();
 builder.Services.AddScoped<SendFileService, SendFileService>();
-builder.Services.AddScoped<SectionService, SectionService>();
-builder.Services.AddScoped<AnalyticsServices, AnalyticsServices>();
+builder.Services.AddScoped<ISection, Section>();
 builder.Services.AddScoped<AnalyticsRepository, AnalyticsRepository>();
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();

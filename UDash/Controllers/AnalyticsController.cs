@@ -10,14 +10,12 @@ namespace UDash.Controllers
 {
 	public class AnalyticsController : Controller
 	{
-		private readonly SectionService _sectionService;
-		private readonly AnalyticsServices _analyticsServices;
+		private readonly ISection _section;
 		private readonly AnalyticsRepository _analyticsRepository;
 
-		public AnalyticsController(SectionService sectionService, AnalyticsServices analytics, AnalyticsRepository analyticsRepository)
-		{			
-			_sectionService = sectionService;			
-			_analyticsServices = analytics;
+		public AnalyticsController(ISection section, AnalyticsRepository analyticsRepository)
+		{
+			_section = section;			
 			_analyticsRepository = analyticsRepository;
 		}
 
@@ -37,14 +35,6 @@ namespace UDash.Controllers
 		{
 			_analyticsRepository.InsertAnalytics(analytics);
 			return RedirectToAction("Index", "Analytics");
-		}
-
-
-
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 	}
 }

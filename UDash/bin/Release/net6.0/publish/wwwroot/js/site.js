@@ -6,6 +6,12 @@
     }, 3000)
 }
 
+let _alert = document.getElementById('alert');
+
+setTimeout(function () {
+    _alert.style.opacity = '0'
+}, 3000)
+
 
 $(document).ready(function () {
     const myTable = "#myTable"

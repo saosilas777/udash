@@ -14,6 +14,9 @@ namespace UDash.Data
 		public DbSet<MeetingsMonths> Meetings { get; set; }
 		public DbSet<NoShowsMonth> NoShows { get; set; }
 		public DbSet<CustomerModel> Customers { get; set; }
+		public DbSet<SendFileImageModel> ImageUrl { get; set; }
+
+
 
 
 

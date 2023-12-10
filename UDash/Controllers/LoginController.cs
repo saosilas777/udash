@@ -8,31 +8,35 @@ using UDash.Services;
 
 namespace UDash.Controllers
 {
+	
 	public class LoginController : Controller
 	{
+		#region Dependencies
 		private readonly ILoginRepository _loginRepository;
 		private readonly IUserRepository _userRepository;
-		private readonly SectionService _sectionService;
+		private readonly ISection _section;
 
 		private readonly ISendEmail _sendEmail;
-		
+
 		public LoginController(ILoginRepository loginRepository,
 							  IUserRepository userRepository,
-							  SectionService sectionService,
+							  ISection section,
 							  ISendEmail sendEmail)
 		{
 			_loginRepository = loginRepository;
 			_userRepository = userRepository;
-			_sectionService = sectionService;
+			_section = section;
 			_sendEmail = sendEmail;
-			
+
 		}
+
+		#endregion
 
 		public IActionResult Login()
 		{
-			var user = _sectionService.Section();
+			var token = _section.GetUserSection();
 			
-			if (user != null)
+			if (token != null)
 			{
 			  return RedirectToAction("Index", "Home");
 			};
@@ -41,7 +45,7 @@ namespace UDash.Controllers
 
 		public IActionResult Logout()
 		{
-			_sectionService.RemoveSection();
+			_section.UserSectionRemove();
 			return RedirectToAction("Login");
 		}
 		public IActionResult SignUp()
@@ -93,7 +97,7 @@ namespace UDash.Controllers
 					if (loginDb != null && loginDb.Password == LoginServices.HashGeneration(loginViewModel.Password))
 					{
 						var authenticated = TokenService.Authenticate(loginDb.User);
-						_sectionService.CreateSection(authenticated);
+						_section.UserSectionCreate(authenticated);
 						UserModel user = TokenService.GetDataInToken(authenticated);
 						if(authenticated != null)
 						{
