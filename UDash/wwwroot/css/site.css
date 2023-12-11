@@ -203,10 +203,10 @@ img {
 }
 
 .main_hero-nav {
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     padding: 0 1rem;
     font-size: 1.5rem;
     margin-top: 1rem;
@@ -258,7 +258,7 @@ img {
 }
 
 .avatar {
-/*    margin-top: 1rem;*/
+    /*    margin-top: 1rem;*/
     width: 50px;
     height: 50px;
 }
@@ -267,7 +267,7 @@ img {
         display: flex;
         align-items: center;
         width: 100%;
-        height:100%;
+        height: 100%;
         border-radius: 50%;
     }
 
@@ -743,16 +743,19 @@ img {
 .margin_right {
     padding-right: .3rem
 }
+
 #insert {
-   display:none;
+    display: none;
     margin-top: 1rem;
 }
+
     #insert form {
-       width:100%;
+        width: 100%;
         position: relative;
         display: flex;
         gap: 1rem;
     }
+
 .insertDataBtn {
     padding: 1rem;
     margin: 1rem 0 0 0;
@@ -763,11 +766,12 @@ img {
     border-radius: 6px;
     cursor: pointer;
 }
+
 .enviarDataBtn {
-    position:absolute;
-    bottom:0;
+    position: absolute;
+    bottom: 0;
     padding: 1rem;
-    justify-content:end;
+    justify-content: end;
     background-color: #3f4457;
     border: 1px solid white;
     box-shadow: 0 0 3px white;
@@ -780,39 +784,44 @@ img {
     background-image: linear-gradient(45deg,#ec407a 48%,#fff 50%);
     padding: 1rem;
     border-radius: 6px;
-    flex:1 0 0;
+    flex: 1 0 0;
 }
-.churns{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+
+.churns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
 .divFlexRow {
     display: flex;
     gap: 1rem;
 }
-.spaceBetween{
-    flex:1 0 0;
+
+.spaceBetween {
+    flex: 1 0 0;
 }
+
 .divFlexColumn {
     display: flex;
     flex-direction: column;
     gap: .3rem;
 }
-    .divFlexColumn input{
-        max-width:2rem;
+
+    .divFlexColumn input {
+        max-width: 2rem;
     }
-    /*Customers*/
-    .dataTables_wrapper {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 98% !important;
-        min-width: 69.19rem;
-        background-color: white;
-        border: none;
-        border-radius: 1rem;
-    }
+/*Customers*/
+.dataTables_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 98% !important;
+    min-width: 69.19rem;
+    background-color: white;
+    border: none;
+    border-radius: 1rem;
+}
 
 
 .dataTables_length label {
@@ -958,6 +967,7 @@ table.myTable {
 
 
 /*Customer*/
+
 .customerBody {
     width: 100%;
     min-width: 55.625rem;
@@ -1131,15 +1141,32 @@ table.myTable {
         margin-top: 1rem;
     }
 
-
-/*/////////////////////////////////////////////////////////////////////////////////////////////*
-/*SendFile*/
-.envio-arquivos {
-    background-color: white;
-    padding: 1rem;
-    width: fit-content;
-    border-radius: 6px;
+#selection {
+    border: none;
+    background-color: transparent;
+    color: #1a73e8;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: .2rem .5rem;
+    align-self: flex-start;
 }
+    #selection:focus{
+        border:none;
+        outline:none;
+    }
+
+    #selection option {
+        background-color: #1a73e8;
+        color: white;
+    }
+    /*/////////////////////////////////////////////////////////////////////////////////////////////*
+/*SendFile*/
+    .envio-arquivos {
+        background-color: white;
+        padding: 1rem;
+        width: fit-content;
+        border-radius: 6px;
+    }
 
     .envio-arquivos form {
         display: flex;
@@ -1173,20 +1200,21 @@ table.myTable {
 
 /*ChangePWD*/
 .form_container {
-    position:relative;
+    position: relative;
     width: 100%;
     margin-top: 1rem;
     height: calc(100vh - 8.5rem);
     background-color: transparent;
     padding: 1rem;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 #alert {
-    position:absolute;
-    top:1rem;
+    position: absolute;
+    top: 1rem;
     background-color: #1a73e8;
     padding: 1rem;
     color: white;
@@ -1194,8 +1222,9 @@ table.myTable {
     width: 60%;
     margin-top: 1rem;
     text-align: center;
-    transition:all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
+
 .form_container-row {
     display: flex;
     justify-content: center;
@@ -1279,4 +1308,3 @@ table.myTable {
     background-color: #ec407a;
     color: white;
 }
-

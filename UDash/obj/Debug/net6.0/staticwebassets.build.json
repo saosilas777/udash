@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Oc8yKl0US9S1PKYv0kWpwuYJx0WzE5GMyXafKDNgByE=",
+  "Hash": "DeA5a2+jNiwxJey7jabjQGGUJHDw5QaTeq+/9dm4uYA=",
   "Source": "UDash",
   "BasePath": "_content/UDash",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\index.js"
+    },
+    {
+      "Identity": "Z:\\udash\\UDash\\wwwroot\\js\\SelectTableItems.js",
+      "SourceId": "UDash",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\udash\\UDash\\wwwroot\\",
+      "BasePath": "_content/UDash",
+      "RelativePath": "js/SelectTableItems.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\SelectTableItems.js"
     },
     {
       "Identity": "Z:\\udash\\UDash\\wwwroot\\js\\site.js",

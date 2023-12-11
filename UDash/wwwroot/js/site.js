@@ -23,7 +23,7 @@ $(document).ready(function () {
                 [5, 10, 15, -1],
                 [5, 10, 15, 'Todos']
             ],
-            
+
             language: {
                 lengthMenu: "Listar _MENU_ clientes",
                 search: "Procurar ",
@@ -35,9 +35,10 @@ $(document).ready(function () {
                     next: "Próximo",
                     last: "Última página"
                 }
-            }
-            
-
+            },
+            columnDefs: [
+                { orderable: false, targets: [3] }
+            ]
         });
     }
 
